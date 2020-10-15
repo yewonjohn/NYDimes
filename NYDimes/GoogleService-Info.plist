@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>989075722363-pvfa4c9v2m1r6o60b9r7v869188ovia8.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.989075722363-pvfa4c9v2m1r6o60b9r7v869188ovia8</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC__F9MRCy5liOvWcDoPE0NzuwTD9_UpV8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>989075722363</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>co.jykim.NYDimes</string>
+	<key>PROJECT_ID</key>
+	<string>nydimes-95545</string>
+	<key>STORAGE_BUCKET</key>
+	<string>nydimes-95545.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:989075722363:ios:e097a9da0c222fdb0892de</string>
+	<key>DATABASE_URL</key>
+	<string>https://nydimes-95545.firebaseio.com</string>
+</dict>
+</plist>
