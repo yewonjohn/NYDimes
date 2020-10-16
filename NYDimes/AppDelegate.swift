@@ -14,11 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        
         
         //Google Sign in
         GIDSignIn.sharedInstance()?.clientID = "989075722363-pvfa4c9v2m1r6o60b9r7v869188ovia8.apps.googleusercontent.com"
@@ -32,14 +30,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
       // ...
       if let error = error {
-        // ...
+        print(error)
         return
       }
+        print("Google sign in worked")
+        
+    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+    let viewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
 
       guard let authentication = user.authentication else { return }
       let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                         accessToken: authentication.accessToken)
-      // ...
+        
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+          if let error = error {
+            print(error)
+          }else{
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            
+            print("user signed in firebase")
+            viewController.performSegue(withIdentifier: "LoginToTabBar", sender: self)
+
+          }
+        }
     }
 
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {

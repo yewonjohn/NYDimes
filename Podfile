@@ -10,6 +10,11 @@ target 'NYDimes' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Core'
   pod 'GoogleSignIn'
+  pod 'IQKeyboardManager'
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
+
+
 
   target 'NYDimesTests' do
     inherit! :search_paths

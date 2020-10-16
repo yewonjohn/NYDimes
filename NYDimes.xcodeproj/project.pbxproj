@@ -39,6 +39,13 @@
 		449A267F25375C440035CAEB /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 449A266C25375C440035CAEB /* Poppins-MediumItalic.ttf */; };
 		449A268025375C440035CAEB /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 449A266D25375C440035CAEB /* Poppins-Regular.ttf */; };
 		449A268525375F0F0035CAEB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 449A268425375F0F0035CAEB /* GoogleService-Info.plist */; };
+		449A27752538A4EC0035CAEB /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A27742538A4EC0035CAEB /* SignUpViewController.swift */; };
+		449A277D2538A5E30035CAEB /* UIKit + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A277C2538A5E30035CAEB /* UIKit + Extensions.swift */; };
+		449A27A32538A8DD0035CAEB /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A27A22538A8DD0035CAEB /* AuthManager.swift */; };
+		449A27A82538AD380035CAEB /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A27A72538AD380035CAEB /* TabBarViewController.swift */; };
+		449A27B02538B5F10035CAEB /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A27AF2538B5F10035CAEB /* ArticleManager.swift */; };
+		449A27D8253907AF0035CAEB /* ArticleCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A27D7253907AF0035CAEB /* ArticleCells.swift */; };
+		449A27DE253924870035CAEB /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A27DD253924870035CAEB /* ArticleModel.swift */; };
 		CC97AA338356D85C8D82FA6A /* Pods_NYDimesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71A261EB0476ADEBABF1A9EE /* Pods_NYDimesTests.framework */; };
 		DEF4BAE73D57FF9387D2FC23 /* Pods_NYDimes_NYDimesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E348AC3A827CDB7E7740892 /* Pods_NYDimes_NYDimesUITests.framework */; };
 /* End PBXBuildFile section */
@@ -98,6 +105,13 @@
 		449A266C25375C440035CAEB /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
 		449A266D25375C440035CAEB /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		449A268425375F0F0035CAEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		449A27742538A4EC0035CAEB /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		449A277C2538A5E30035CAEB /* UIKit + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit + Extensions.swift"; sourceTree = "<group>"; };
+		449A27A22538A8DD0035CAEB /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		449A27A72538AD380035CAEB /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		449A27AF2538B5F10035CAEB /* ArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
+		449A27D7253907AF0035CAEB /* ArticleCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCells.swift; sourceTree = "<group>"; };
+		449A27DD253924870035CAEB /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		540423F35A1B4ADAFD7F7FB8 /* Pods-NYDimes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYDimes.debug.xcconfig"; path = "Target Support Files/Pods-NYDimes/Pods-NYDimes.debug.xcconfig"; sourceTree = "<group>"; };
 		5E348AC3A827CDB7E7740892 /* Pods_NYDimes_NYDimesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYDimes_NYDimesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71A261EB0476ADEBABF1A9EE /* Pods_NYDimesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYDimesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +195,7 @@
 				449A2648253744230035CAEB /* ViewModel */,
 				449A26472537441B0035CAEB /* Model */,
 				449A261A253741CA0035CAEB /* Main.storyboard */,
+				449A277C2538A5E30035CAEB /* UIKit + Extensions.swift */,
 				449A261D253741CB0035CAEB /* Assets.xcassets */,
 				449A261F253741CB0035CAEB /* LaunchScreen.storyboard */,
 				449A2622253741CB0035CAEB /* Info.plist */,
@@ -210,6 +225,8 @@
 		449A26472537441B0035CAEB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				449A27DD253924870035CAEB /* ArticleModel.swift */,
+				449A27DC2539246A0035CAEB /* API Network */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -217,6 +234,7 @@
 		449A2648253744230035CAEB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				449A27A22538A8DD0035CAEB /* AuthManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -225,6 +243,9 @@
 			isa = PBXGroup;
 			children = (
 				449A2618253741CA0035CAEB /* LoginViewController.swift */,
+				449A27742538A4EC0035CAEB /* SignUpViewController.swift */,
+				449A27A72538AD380035CAEB /* TabBarViewController.swift */,
+				449A27D6253907890035CAEB /* Cells */,
 				449A264A253744470035CAEB /* Styles */,
 			);
 			path = View;
@@ -265,6 +286,22 @@
 				449A266025375C430035CAEB /* Poppins-ThinItalic.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		449A27D6253907890035CAEB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				449A27D7253907AF0035CAEB /* ArticleCells.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		449A27DC2539246A0035CAEB /* API Network */ = {
+			isa = PBXGroup;
+			children = (
+				449A27AF2538B5F10035CAEB /* ArticleManager.swift */,
+			);
+			path = "API Network";
 			sourceTree = "<group>";
 		};
 		691B98473D5C7D2A617A9C29 /* Frameworks */ = {
@@ -571,11 +608,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				449A27DE253924870035CAEB /* ArticleModel.swift in Sources */,
 				449A264C25375B3A0035CAEB /* Fonts.swift in Sources */,
+				449A27A32538A8DD0035CAEB /* AuthManager.swift in Sources */,
+				449A27752538A4EC0035CAEB /* SignUpViewController.swift in Sources */,
+				449A27B02538B5F10035CAEB /* ArticleManager.swift in Sources */,
+				449A27D8253907AF0035CAEB /* ArticleCells.swift in Sources */,
 				449A265125375B420035CAEB /* Colors.swift in Sources */,
 				449A2619253741CA0035CAEB /* LoginViewController.swift in Sources */,
+				449A277D2538A5E30035CAEB /* UIKit + Extensions.swift in Sources */,
 				449A2615253741CA0035CAEB /* AppDelegate.swift in Sources */,
 				449A265625375B4F0035CAEB /* NYButton.swift in Sources */,
+				449A27A82538AD380035CAEB /* TabBarViewController.swift in Sources */,
 				449A2617253741CA0035CAEB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
