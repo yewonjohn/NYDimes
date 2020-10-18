@@ -19,7 +19,6 @@ class LoginViewController: UIViewController {
     
     // MARK: - Properties
     let auth = AuthManager()
-    let articleAPI = ArticleManager()
     
 
     // MARK: - User Interactions
@@ -42,11 +41,6 @@ class LoginViewController: UIViewController {
         //Google Sign in
         GIDSignIn.sharedInstance()?.presentingViewController = self
 //        GIDSignIn.sharedInstance().signIn()
-        
-        articleAPI.getArticles(){ (articleArray) in
-            //handle completion here
-        }
-        
     }
     
     func segueToTabBar(){

@@ -11,12 +11,11 @@ import SwiftyJSON
 
 class ArticleManager {
     
-    func getArticles(completion: @escaping ((_ articles:[ArticleModel])->Void)) {
+    func getArticles(type: String, days: Int, completion: @escaping ((_ articles:[ArticleModel])->Void)) {
         
         var resultArticles = [ArticleModel]()
-        var days = 1
         let apiKey = "xhCbQFpLJv0wgUALuxi21dzp3pl873cb"
-        let url = "https://api.nytimes.com/svc/mostpopular/v2/viewed/\(days).json?api-key=\(apiKey)"
+        let url = "https://api.nytimes.com/svc/mostpopular/v2/\(type)/\(days).json?api-key=\(apiKey)"
 
         
         AF.request(url,method:.get).validate().responseJSON{ (responseObject) in

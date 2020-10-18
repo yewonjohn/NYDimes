@@ -41,8 +41,6 @@ struct ArticleModel {
             let imageJSON = mediaMetadata[mediaMetadata.count-1]
             self.image = MediaModel(url: imageJSON["url"].stringValue, height: imageJSON["height"].intValue, width: imageJSON["width"].intValue)
         }
-        
-        print(self.image)
     }
 
 }

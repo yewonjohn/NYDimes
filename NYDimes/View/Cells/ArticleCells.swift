@@ -7,25 +7,23 @@
 
 import UIKit
 
-class ArticleCells: UICollectionViewCell{
+class ArticleCells: UICollectionViewCell {
+
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
     
-    fileprivate let articleTitle: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.font =
-        label.text = "How to Article 101"
-        label.textColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
-        label.textAlignment = .center
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
         
-        return label
-    }()
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        containerView.layer.cornerRadius = 5
+        containerView.clipsToBounds = true
+        
+        titleLabel.text = "Something Here"
+        
+        imageView.image = #imageLiteral(resourceName: "exampleBackground2")
+        
+    }
+
 }
