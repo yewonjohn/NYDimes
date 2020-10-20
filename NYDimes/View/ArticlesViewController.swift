@@ -45,7 +45,6 @@ class ArticlesViewController: UIViewController{
 //MARK:- CollectionView Data Source
 extension ArticlesViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(listOfArticles.count)
         return listOfArticles.count
     }
     
@@ -57,16 +56,13 @@ extension ArticlesViewController: UICollectionViewDataSource{
         //datasource for all cell properties
         cell.configureImage(with: #imageLiteral(resourceName: "exampleBackground2"))
         cell.configureTitle(with: listOfArticles[indexPath.row].title ?? "No Title")
+        cell.configureButton()
         cell.configureAuthors(authors: listOfArticles[indexPath.row].author ?? "Authors Unknown")
         
-//        let button = cell.saveButton
-//        button.addTarget(self, action: #selector(self.saveButtonClicked(sender:)), for: .touchUpInside)
-//        let singleTap = UITapGestureRecognizer(target: self, action: #selector(saveButtonClicked))
-//        button.isUserInteractionEnabled = true
-//        button.addGestureRecognizer(singleTap)
         return cell
     }
-    @objc private func saveButtonClicked(sender: UIButton){
+
+    @objc func saveButtonClicked(){
         print("button Clicked")
 //        pulse(button: saveButton)
     }

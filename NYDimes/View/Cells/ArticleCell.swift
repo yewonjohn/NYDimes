@@ -12,7 +12,7 @@ class ArticleCell: UICollectionViewCell{
     static let identifier = "ArticleCell"
     private let saveClicked = false
     
-    private let articleImage = UIImageView()
+     let articleImage = UIImageView()
     private let articleTitle = UILabel()
     private let gradientView = GradientImageView(colors: [#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),#colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)], gradientDirection: .upDown)
     let saveButton = UIButton()
@@ -22,7 +22,7 @@ class ArticleCell: UICollectionViewCell{
     override init(frame: CGRect) {
         super.init(frame: frame)
     
-        configureButton()
+//        configureButton()
     }
     required init?(coder: NSCoder) {
         fatalError()
@@ -63,12 +63,13 @@ class ArticleCell: UICollectionViewCell{
     
     func configureButton(){
         articleImage.addSubview(saveButton)
+        saveButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         saveButton.setBackgroundImage(UIImage(systemName: "heart"), for: .normal)
-        saveButton.backgroundImage(for: .normal)?.withTintColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
-        saveButton.addTarget(self, action: #selector(self.saveButtonClicked(sender:)), for: .touchUpInside)
-//        let singleTap = UITapGestureRecognizer(target: self, action: #selector(saveButtonClicked(sender:)))
-//        saveButton.isUserInteractionEnabled = true
-//        saveButton.addGestureRecognizer(singleTap)
+//        saveButton.backgroundImage(for: .normal)?.withTintColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
+//        saveButton.addTarget(self, action: #selector(saveButtonClicked), for: .touchUpInside)
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(saveButtonClicked))
+        saveButton.isUserInteractionEnabled = true
+        saveButton.addGestureRecognizer(singleTap)
         
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         saveButton.trailingAnchor.constraint(equalTo: articleImage.trailingAnchor, constant: -5).isActive = true
@@ -120,8 +121,8 @@ class ArticleCell: UICollectionViewCell{
 
     }
     
-    //MARK:-- IBActions
-    @objc private func saveButtonClicked(sender: UIButton){
+    //MARK:-- User Interaction
+    @objc private func saveButtonClicked(){
         print("button Clicked")
         pulse(button: saveButton)
     }
@@ -131,9 +132,9 @@ class ArticleCell: UICollectionViewCell{
 //        imageView.frame = contentView.bounds
 //    }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        articleImage.image = nil
-    }
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//        articleImage.image = nil
+//    }
     
 }
