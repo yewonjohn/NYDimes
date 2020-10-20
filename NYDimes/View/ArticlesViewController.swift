@@ -13,13 +13,13 @@ class ArticlesViewController: UIViewController{
     @IBOutlet weak var articleCollectionView: UICollectionView!
     
     //MARK:- Properties
-    let articleAPI = ArticleManager()
+    let viewModel = ArticlesViewModel()
     var listOfArticles = [ArticleModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        articleAPI.getArticles(type: "viewed", days: 1){ (articleArray) in
+        viewModel.getArticles("viewed", 1){ (articleArray) in
             self.listOfArticles = articleArray
             self.articleCollectionView.reloadData()
         }
@@ -29,11 +29,19 @@ class ArticlesViewController: UIViewController{
         
         articleCollectionView.delegate = self
         articleCollectionView.dataSource = self
-        articleCollectionView.register(ArticleCells.self, forCellWithReuseIdentifier: "ArticleCells")
+        articleCollectionView.register(ArticleCell.self, forCellWithReuseIdentifier: ArticleCell.identifier)
         
     }
     
+//    @objc func saveButtonClicked(sender: UIButton){
+//        print("button Clicked")
+////        pulse(button: saveButton)
+//    }
+    
+    
+    
 }
+
 //MARK:- CollectionView Data Source
 extension ArticlesViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -42,32 +50,48 @@ extension ArticlesViewController: UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCells", for: indexPath) as! ArticleCells
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ArticleCell.identifier, for: indexPath) as! ArticleCell
         cell.layer.cornerRadius = 15
         cell.layer.masksToBounds = true
         
+        //datasource for all cell properties
+        cell.configureImage(with: #imageLiteral(resourceName: "exampleBackground2"))
+        cell.configureTitle(with: listOfArticles[indexPath.row].title ?? "No Title")
+        cell.configureAuthors(authors: listOfArticles[indexPath.row].author ?? "Authors Unknown")
+        
+//        let button = cell.saveButton
+//        button.addTarget(self, action: #selector(self.saveButtonClicked(sender:)), for: .touchUpInside)
+//        let singleTap = UITapGestureRecognizer(target: self, action: #selector(saveButtonClicked))
+//        button.isUserInteractionEnabled = true
+//        button.addGestureRecognizer(singleTap)
         return cell
+    }
+    @objc private func saveButtonClicked(sender: UIButton){
+        print("button Clicked")
+//        pulse(button: saveButton)
     }
 }
 
+
 //MARK: - CollectionView Delegate Framing Layout
-//extension ArticlesViewController: UICollectionViewDelegateFlowLayout{
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        return CGSize(width: collectionView.frame.height * 0.6, height: collectionView.frame.height * 0.9)
-//
-//    }
-//
+extension ArticlesViewController: UICollectionViewDelegateFlowLayout{
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        return CGSize(width: collectionView.frame.width * 0.95, height: collectionView.frame.height * 0.3)
+
+    }
+
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 //       return UIEdgeInsets(top: 0, left: 45, bottom: 0, right: 0)
 //    }
-//}
+}
 
 extension ArticlesViewController: UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("touchie touchie")
+//        guard let url = URL(string: (listOfArticles[indexPath.row].url!)) else { return }
+//        UIApplication.shared.open(url)
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         print("deselectie")

@@ -14,11 +14,19 @@ extension UIColor {
     }
     
     class var fieldColor: UIColor {
-        return UIColor(red: 42, green: 57, blue: 87, alpha: 1)
+        return #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
     }
     
     class var buttonColor: UIColor {
         return #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+    }
+    
+    class var articleTitle: UIColor{
+        return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    }
+    
+    class var authors: UIColor{
+        return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
     
     

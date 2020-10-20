@@ -29,7 +29,7 @@ struct ArticleModel {
         self.published = json["published"].stringValue
         self.updated = json["updated"].stringValue
         self.section = json["section"].stringValue
-        self.author = json["author"].stringValue
+        self.author = json["byline"].stringValue
         self.title = json["title"].stringValue
         self.abstract = json["abstract"].stringValue
         
@@ -42,7 +42,7 @@ struct ArticleModel {
             self.image = MediaModel(url: imageJSON["url"].stringValue, height: imageJSON["height"].intValue, width: imageJSON["width"].intValue)
         }
     }
-
+    init(){}
 }
 
 struct MediaModel {

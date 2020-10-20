@@ -348,6 +348,7 @@ PODS:
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
   - PromisesObjC (1.2.9)
+  - RxSwift (5.1.1)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
@@ -357,6 +358,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - GoogleSignIn
   - IQKeyboardManager
+  - RxSwift
   - SwiftyJSON
 
 SPEC REPOS:
@@ -385,6 +387,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - RxSwift
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -412,8 +415,9 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 828b4e89dd658209b033eb37d43dc91656871643
+PODFILE CHECKSUM: bd3061110dada1ff4188f2ea130c0cf7c287f8b8
 
 COCOAPODS: 1.9.3

@@ -9,15 +9,16 @@ import UIKit
 
 class TabBarViewController: UITabBarController{
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        selectedIndex = 1
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
 }

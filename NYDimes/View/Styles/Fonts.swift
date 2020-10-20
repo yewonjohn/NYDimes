@@ -24,5 +24,17 @@ extension UIFont {
         return UIFont(name: "Poppins-Regular", size: 16.0)!
     }
     
+    class var articleTitle: UIFont {
+        return UIFont(name: "Poppins-Medium", size: 16.0)!
+    }
+    
+    class var authors: UIFont {
+        return UIFont(name: "Poppins-Regular", size: 12.0)!
+    }
+    
+    class var guestButton: UIFont{
+        return UIFont(name: "Poppins-Semibold", size: 12.0)!
+    }
+    
     
 }
