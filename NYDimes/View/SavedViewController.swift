@@ -8,10 +8,12 @@
 import UIKit
 import Kingfisher
 import SwipeCellKit
+import NVActivityIndicatorView
 
 class SavedViewController : UIViewController{
     //MARK:-- Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var loadingIcon: NVActivityIndicatorView!
     
     //MARK:-- Properties
     let viewModel = SavedViewModel()
@@ -31,11 +33,10 @@ class SavedViewController : UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear")
         if(viewModel.getUser() != nil){
             getSavedArticles()
         }else{
-            let alert = UIAlertController(title: "Saved:", message: "Please Login to access saved articles!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "oops!", message: "Please login to save articles!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok!", style: .default, handler: { action in}))
             self.present(alert, animated: true, completion: nil)
         }
@@ -43,8 +44,11 @@ class SavedViewController : UIViewController{
     }
     //MARK:- Configs
     func getSavedArticles(){
+        viewModel.dbManager.delegate = self
+        
         viewModel.loadSavedArticles{ (articlesArray) in
             DispatchQueue.main.async {
+                self.loadingIcon.stopAnimating()
                 self.listOfArticles = articlesArray
                 self.tableView.reloadData()
             }
@@ -116,4 +120,12 @@ extension SavedViewController : SwipeTableViewCellDelegate{
         options.expansionStyle = .destructive
         return options
     }
+}
+//MARK:-- Loading Icon Delegate
+extension SavedViewController: SavedArticleManagerDelegate{
+    func isLoading() {
+        loadingIcon.startAnimating()
+    }
+    
+    
 }

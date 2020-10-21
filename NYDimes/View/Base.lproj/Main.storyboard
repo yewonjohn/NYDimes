@@ -82,6 +82,19 @@
                                     <constraint firstItem="eye-4q-xYv" firstAttribute="top" secondItem="e3M-KC-99B" secondAttribute="top" id="uqS-MC-lhC"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOk-fp-SDy" userLabel="loadingIcon" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="RSx-dw-l8D"/>
+                                    <constraint firstAttribute="height" constant="50" id="aQe-em-tF2"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.36260707489999999" green="0.36260707489999999" blue="0.36260707489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballTrianglePath"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4eI-dG-DXp"/>
                         <color key="backgroundColor" red="0.95486992390000003" green="0.95486992390000003" blue="0.95486992390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -92,12 +105,16 @@
                             <constraint firstItem="4eI-dG-DXp" firstAttribute="trailing" secondItem="e3M-KC-99B" secondAttribute="trailing" constant="25" id="XUU-Wx-21l"/>
                             <constraint firstItem="e3M-KC-99B" firstAttribute="leading" secondItem="4eI-dG-DXp" secondAttribute="leading" constant="25" id="bo2-iR-2Zc"/>
                             <constraint firstItem="4eI-dG-DXp" firstAttribute="bottom" secondItem="rTK-Nd-52Q" secondAttribute="bottom" id="oAl-Ed-18Y"/>
+                            <constraint firstItem="rOk-fp-SDy" firstAttribute="centerX" secondItem="8hV-w6-zxt" secondAttribute="centerX" id="qHH-7Q-h3p"/>
                             <constraint firstItem="rTK-Nd-52Q" firstAttribute="top" secondItem="e3M-KC-99B" secondAttribute="bottom" constant="15" id="qy8-xH-1af"/>
+                            <constraint firstItem="rOk-fp-SDy" firstAttribute="centerY" secondItem="8hV-w6-zxt" secondAttribute="centerY" id="wiB-Lu-S0p"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Articles" image="newspaper" catalog="system" id="ans-Fk-RGj"/>
                     <connections>
                         <outlet property="articleCollectionView" destination="rTK-Nd-52Q" id="pKM-ST-w20"/>
+                        <outlet property="containerView" destination="e3M-KC-99B" id="xg4-SY-71g"/>
+                        <outlet property="loadingIcon" destination="rOk-fp-SDy" id="yml-9V-axs"/>
                         <outlet property="searchButton" destination="VNW-jk-xXR" id="tFI-IN-9H0"/>
                         <outlet property="typePicker" destination="eye-4q-xYv" id="t5L-ML-4x4"/>
                     </connections>
@@ -125,6 +142,19 @@
                                 <rect key="frame" x="5" y="217" width="404" height="591"/>
                                 <color key="backgroundColor" red="0.95486992390000003" green="0.95486992390000003" blue="0.95486992390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xsy-Pq-M9e" userLabel="loadingIcon" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Dvz-QE-34C"/>
+                                    <constraint firstAttribute="width" constant="50" id="IOd-Ne-2C2"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.36260707489999999" green="0.36260707489999999" blue="0.36260707489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballTrianglePath"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TOK-cV-q4P"/>
                         <color key="backgroundColor" red="0.95486992390000003" green="0.95486992390000003" blue="0.95486992390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -134,11 +164,14 @@
                             <constraint firstItem="iKm-kx-Gtc" firstAttribute="top" secondItem="TOK-cV-q4P" secondAttribute="top" constant="24" id="XSd-2Y-jB9"/>
                             <constraint firstItem="E9f-OI-w8M" firstAttribute="leading" secondItem="TOK-cV-q4P" secondAttribute="leading" constant="5" id="ctr-LN-aqt"/>
                             <constraint firstItem="TOK-cV-q4P" firstAttribute="bottom" secondItem="E9f-OI-w8M" secondAttribute="bottom" constant="5" id="dJF-as-lBo"/>
+                            <constraint firstItem="xsy-Pq-M9e" firstAttribute="centerY" secondItem="AAS-bm-fuy" secondAttribute="centerY" id="g7z-6X-R0M"/>
                             <constraint firstItem="E9f-OI-w8M" firstAttribute="top" secondItem="iKm-kx-Gtc" secondAttribute="bottom" constant="15" id="nmd-wC-eKy"/>
+                            <constraint firstItem="xsy-Pq-M9e" firstAttribute="centerX" secondItem="AAS-bm-fuy" secondAttribute="centerX" id="pJt-DD-exz"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Saved" image="suit.heart.fill" catalog="system" id="zV9-9v-GPN"/>
                     <connections>
+                        <outlet property="loadingIcon" destination="xsy-Pq-M9e" id="bxr-jv-yl3"/>
                         <outlet property="tableView" destination="E9f-OI-w8M" id="RK4-vd-79z"/>
                     </connections>
                 </viewController>

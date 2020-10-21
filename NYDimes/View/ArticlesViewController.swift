@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class ArticlesViewController: UIViewController{
     
@@ -14,6 +15,7 @@ class ArticlesViewController: UIViewController{
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var typePicker: UIPickerView!
     @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var loadingIcon: NVActivityIndicatorView!
     
     //MARK:- Properties
     let viewModel = ArticlesViewModel()
@@ -29,17 +31,17 @@ class ArticlesViewController: UIViewController{
 
         getArticles()
         configureCollectionView()
-        configureTableView()
+        configureLoading()
         configPickerView()
 //        configButton()
     }
     
     //MARK:-- Configuration & Layout
     func getArticles(){
-        print(type)
-        print(days)
+        viewModel.articleAPI.delegate = self
         viewModel.getArticles(type, days){ (articleArray) in
             DispatchQueue.main.async {
+                self.loadingIcon.stopAnimating()
                 self.listOfArticles = articleArray
                 self.articleCollectionView.reloadData()
             }
@@ -49,12 +51,14 @@ class ArticlesViewController: UIViewController{
     func configureCollectionView(){
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: view.frame.size.width/3, height: view.frame.size.height/3)
-    }
-    
-    func configureTableView(){
+        
         articleCollectionView.delegate = self
         articleCollectionView.dataSource = self
         articleCollectionView.register(ArticleCell.self, forCellWithReuseIdentifier: ArticleCell.identifier)
+    }
+    
+    func configureLoading(){
+        
     }
     
     func configPickerView(){
@@ -72,7 +76,6 @@ class ArticlesViewController: UIViewController{
     //MARK:- User Interaction
     
     @IBAction func searchButton(_ sender: UIButton) {
-        print("pressed")
         getArticles()
     }
 }
@@ -95,6 +98,7 @@ extension ArticlesViewController: UICollectionViewDataSource{
         cell.configureTitle(with: listOfArticles[indexPath.row].title ?? "No Title")
         cell.configureButton()
         cell.configureAuthors(authors: listOfArticles[indexPath.row].author ?? "Authors Unknown")
+        cell.configureArrowButton()
         
         return cell
     }
@@ -114,10 +118,8 @@ extension ArticlesViewController: UICollectionViewDelegateFlowLayout{
 
 extension ArticlesViewController: UICollectionViewDelegate{
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let url = URL(string: (listOfArticles[indexPath.row].url!)) else { return }
-//        UIApplication.shared.open(url)
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//    }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         print("deselectie")
     }
@@ -169,6 +171,13 @@ extension ArticlesViewController: UIPickerViewDataSource{
         return label
     }
     
+}
+
+//MARK:- Loading Delegate
+extension ArticlesViewController: ArticleManagerDelegate{
+    func isLoading() {
+        loadingIcon.startAnimating()
+    }
     
     
 }

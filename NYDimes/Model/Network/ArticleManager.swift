@@ -9,13 +9,20 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
+protocol ArticleManagerDelegate {
+    func isLoading()
+}
+
 class ArticleManager {
     
+    var delegate: ArticleManagerDelegate?
+    
     func getArticles(type: String, days: Int, completion: @escaping ((_ articles:[ArticleModel])->Void)) {
-        
         var resultArticles = [ArticleModel]()
         let apiKey = "xhCbQFpLJv0wgUALuxi21dzp3pl873cb"
         let url = "https://api.nytimes.com/svc/mostpopular/v2/\(type)/\(days).json?api-key=\(apiKey)"
+        
+        delegate?.isLoading()
         
         AF.request(url,method:.get).validate().responseJSON{ (responseObject) in
             switch responseObject.result{

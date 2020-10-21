@@ -15,7 +15,7 @@ target 'NYDimes' do
   pod 'SwiftyJSON'
   pod 'SwipeCellKit'
   pod 'Kingfisher', '~> 5.14'
-
+  pod 'NVActivityIndicatorView'
 
 
   target 'NYDimesTests' do

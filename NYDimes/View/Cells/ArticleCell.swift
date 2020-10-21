@@ -13,14 +13,15 @@ class ArticleCell: UICollectionViewCell{
     static let identifier = "ArticleCell"
     private let viewModel = ArticlesViewModel()
     var article : ArticleModel?
-//    private var saveClicked = false
+    private var saveClicked = false
 
     //MARK:- UI Properties
-    let articleImage = UIImageView()
+    private let articleImage = UIImageView()
     private let articleTitle = UILabel()
     private let gradientView = GradientImageView(colors: [#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),#colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)], gradientDirection: .upDown)
-    let saveButton = UIButton()
+    private let saveButton = UIButton()
     private let authorLabel = UILabel()
+    private let arrowButton = UIButton()
     
     //MARK:- LifeCycle Methods
 
@@ -77,8 +78,8 @@ class ArticleCell: UICollectionViewCell{
         saveButton.setBackgroundImage(UIImage(systemName: "heart"), for: .normal)
         saveButton.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         saveButton.translatesAutoresizingMaskIntoConstraints = false
-        saveButton.trailingAnchor.constraint(equalTo: articleImage.trailingAnchor, constant: -5).isActive = true
-        saveButton.bottomAnchor.constraint(equalTo: articleImage.bottomAnchor, constant: -5).isActive = true
+        saveButton.trailingAnchor.constraint(equalTo: articleImage.trailingAnchor, constant: -8).isActive = true
+        saveButton.bottomAnchor.constraint(equalTo: articleImage.bottomAnchor, constant: -8).isActive = true
         saveButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
         saveButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
         saveButton.addTarget(self, action: #selector(saveButtonClicked(button:)), for: .touchUpInside)
@@ -95,12 +96,38 @@ class ArticleCell: UICollectionViewCell{
         authorLabel.trailingAnchor.constraint(equalTo: saveButton.leadingAnchor, constant: -3).isActive = true
         authorLabel.bottomAnchor.constraint(equalTo: articleImage.bottomAnchor, constant: -5).isActive = true
     }
+    
+    func configureArrowButton(){
+        articleImage.addSubview(arrowButton)
+        
+        arrowButton.setBackgroundImage(UIImage(systemName: "chevron.right"), for: .normal)
+        arrowButton.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        arrowButton.translatesAutoresizingMaskIntoConstraints = false
+        arrowButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        arrowButton.widthAnchor.constraint(equalToConstant: 10).isActive = true
+        arrowButton.trailingAnchor.constraint(equalTo: articleImage.trailingAnchor, constant: -3).isActive = true
+        arrowButton.centerYAnchor.constraint(equalTo: articleImage.centerYAnchor).isActive = true
+        arrowButton.addTarget(self, action: #selector(arrowClicked), for: .touchUpInside)
+
+    }
     //MARK:-- User Interaction
     @objc func saveButtonClicked(button: UIButton){
-        guard let article = article else {return}
-        viewModel.saveArticle(article: article)
-        Animations().pulse(button: button)
+        if(!saveClicked){
+            guard let article = article else {return}
+            viewModel.saveArticle(article: article)
+            Animations().pulse(button: button)
+            
+            saveClicked = true
+        }
     }
+    
+    @objc func arrowClicked(){
+        guard let article = article else {return}
+        
+        guard let url = URL(string: (article.url) as! String) else { return }
+        UIApplication.shared.open(url)
+    }
+    
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         guard isUserInteractionEnabled else { return nil }
         guard !isHidden else { return nil }
@@ -110,6 +137,9 @@ class ArticleCell: UICollectionViewCell{
         // add one of these blocks for each button in our collection view cell we want to actually work
         if self.saveButton.point(inside: convert(point, to: saveButton), with: event) {
             return self.saveButton
+        }
+        if self.arrowButton.point(inside: convert(point, to: arrowButton), with: event) {
+            return self.arrowButton
         }
         return super.hitTest(point, with: event)
     }

@@ -27,11 +27,11 @@ class NYSearchButton: UIButton{
         layer.cornerRadius  = frame.size.height/3
         setTitleColor(.darkGray, for: .normal)
         
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0.0, height: 4.0)
-        layer.masksToBounds = false
-//        layer.shadowRadius = 2.0
-        layer.shadowOpacity = 0.2
+//        layer.shadowColor = UIColor.black.cgColor
+//        layer.shadowOffset = CGSize(width: 0.0, height: 4.0)
+//        layer.masksToBounds = false
+////        layer.shadowRadius = 2.0
+//        layer.shadowOpacity = 0.2
 //        layer.cornerRadius = pressButton.frame.width / 2
         layer.borderColor = UIColor.darkGray.cgColor
         layer.borderWidth = 1.0

@@ -9,13 +9,16 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 
+protocol SavedArticleManagerDelegate {
+    func isLoading()
+}
+
 class SavedArticleManager{
-    
+    var delegate: SavedArticleManagerDelegate?
     let db = Firestore.firestore()
     let currentUser = Auth.auth().currentUser?.email
 
     func addToSaved(article: ArticleModel){
-        
         let timeStamp = NSDate().timeIntervalSince1970
         let docRef = db.collection("saved")
         //creating unique id with email + id
@@ -47,6 +50,7 @@ class SavedArticleManager{
     }
         
     func fetchSavedArticles(completion: @escaping ((_ articles:[ArticleModel])->Void)){
+        delegate?.isLoading()
         var articlesArray = [ArticleModel]()
         
         db.collection("saved")
