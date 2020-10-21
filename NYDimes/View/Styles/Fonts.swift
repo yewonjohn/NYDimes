@@ -33,11 +33,15 @@ extension UIFont {
     }
     
     class var guestButton: UIFont{
-        return UIFont(name: "Poppins-Semibold", size: 12.0)!
+        return UIFont(name: "Poppins-SemiBold", size: 12.0)!
     }
     
     class var pickerLabel: UIFont{
         return UIFont(name: "Poppins-Regular", size: 12.0)!
+    }
+    
+    class var pickerTitleLabel: UIFont{
+        return UIFont(name: "Poppins-SemiBold", size: 12.0)!
     }
     
     

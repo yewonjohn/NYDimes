@@ -20,18 +20,18 @@ class ArticlesViewController: UIViewController{
     //MARK:- Properties
     let viewModel = ArticlesViewModel()
     var listOfArticles = [ArticleModel]()
-    let typePickerData = ["emailed","shared","viewed"]
-    let daysPickerData = [1,7,30]
-    var type = "emailed"
-    var days = 1
+    let typePickerData = Const.typePickerData
+    let daysPickerData = Const.daysPickerData
+    var type : String?
+    var days : Int?
     
     //MARK:- LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setInitialSearchValues()
         getArticles()
         configureCollectionView()
-        configureLoading()
         configPickerView()
 //        configButton()
     }
@@ -39,13 +39,18 @@ class ArticlesViewController: UIViewController{
     //MARK:-- Configuration & Layout
     func getArticles(){
         viewModel.articleAPI.delegate = self
-        viewModel.getArticles(type, days){ (articleArray) in
+        viewModel.getArticles(type!, days!){ (articleArray) in
             DispatchQueue.main.async {
                 self.loadingIcon.stopAnimating()
                 self.listOfArticles = articleArray
                 self.articleCollectionView.reloadData()
             }
         }
+    }
+    
+    func setInitialSearchValues(){
+        type = typePickerData[0]
+        days = daysPickerData[0]
     }
     
     func configureCollectionView(){
@@ -56,22 +61,13 @@ class ArticlesViewController: UIViewController{
         articleCollectionView.dataSource = self
         articleCollectionView.register(ArticleCell.self, forCellWithReuseIdentifier: ArticleCell.identifier)
     }
-    
-    func configureLoading(){
-        
-    }
-    
+
     func configPickerView(){
         typePicker.delegate = self
         typePicker.dataSource = self
         typePicker.layer.cornerRadius = 15
         typePicker.setValue(UIColor.black, forKeyPath: "textColor")
-//        typePicker.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 0.7)
     }
-    
-//    func configButton(){
-//        searchButton.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 0.3)
-//    }
     
     //MARK:- User Interaction
     
@@ -94,7 +90,7 @@ extension ArticlesViewController: UICollectionViewDataSource{
         
         //datasource for all cell properties
         cell.article = listOfArticles[indexPath.row]
-        cell.configureImage(with: #imageLiteral(resourceName: "exampleBackground2"))
+        cell.configureImage(with: listOfArticles[indexPath.row].image?.url ?? "")
         cell.configureTitle(with: listOfArticles[indexPath.row].title ?? "No Title")
         cell.configureButton()
         cell.configureAuthors(authors: listOfArticles[indexPath.row].author ?? "Authors Unknown")
@@ -116,15 +112,6 @@ extension ArticlesViewController: UICollectionViewDelegateFlowLayout{
     }
 }
 
-extension ArticlesViewController: UICollectionViewDelegate{
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//    }
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        print("deselectie")
-    }
-    
-}
 //MARK:-- UIPicker Delegate & DataSource
 extension ArticlesViewController: UIPickerViewDelegate{
     
@@ -154,20 +141,24 @@ extension ArticlesViewController: UIPickerViewDataSource{
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = (view as? NYPickerLabel) ?? NYPickerLabel()
+        let titleLabel = (view as? NYPickerTitleLabel) ?? NYPickerTitleLabel()
 
         // where data is an Array of String
         switch component {
         case 0:
-            label.text = "Type:"
+            titleLabel.text = "Type:"
+            return titleLabel
         case 1:
             label.text = typePickerData[row]
         case 2:
-            label.text = "Days:"
+            titleLabel.text = "Days:"
+            return titleLabel
         case 3:
             label.text = "\(daysPickerData[row])"
         default:
             print("nothing")
         }
+        
         return label
     }
     

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-//Article Model for API fetching
+//Article Model for API fetching / Firebase fetching
 struct ArticleModel {
     
     var url: String?
@@ -24,6 +24,7 @@ struct ArticleModel {
     var documentId: String?
     
     init(json:JSON) {
+        //using SwiftyJSON here to set values
         self.url = json["url"].stringValue
         self.id = json["id"].intValue
         self.source = json["source"].stringValue

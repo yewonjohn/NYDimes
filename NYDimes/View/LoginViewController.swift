@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
 
     }
     
-    // MARK: - View Controller Life Cycle
+    // MARK: - LifeCycle Methods
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -63,7 +63,7 @@ class LoginViewController: UIViewController {
     func googleSignConfig(){
         //Google Sign in
         GIDSignIn.sharedInstance()?.presentingViewController = self
-        GIDSignIn.sharedInstance()?.signIn()
+//        GIDSignIn.sharedInstance()?.signIn()
     }
     
     func layoutConfig(){

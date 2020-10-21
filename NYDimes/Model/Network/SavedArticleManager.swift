@@ -76,7 +76,6 @@ class SavedArticleManager{
                             article.url = data["url"] as? String
                             
                             articlesArray.append(article)
-                            
                         }
                     }
                     completion(articlesArray)

@@ -19,13 +19,11 @@ class SavedViewModel{
         dbManager.fetchSavedArticles{ (articlesArray) in
             completion(articlesArray)
         }
-        
     }
     
     func getUser() -> User?{
         return currentUser
     }
-    
     func deleteArticle(article: ArticleModel){
         dbManager.deleteSavedArticle(article: article)
     }

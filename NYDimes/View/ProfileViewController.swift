@@ -24,8 +24,8 @@ class ProfileViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        accountSettingsLabel = ["Search History", "Password", "Rate Us", "App Feedback", "Logout"]
-        accountSettingsImages = [#imageLiteral(resourceName: "History"),#imageLiteral(resourceName: "Password"),#imageLiteral(resourceName: "Rate"),#imageLiteral(resourceName: "Comment"),#imageLiteral(resourceName: "Logout")]
+        accountSettingsLabel = Const.accountSettingsLabel
+        accountSettingsImages = Const.accountSettingsImages
         
         setHelloLabel()
         setLoginText()
@@ -36,7 +36,7 @@ class ProfileViewController: UIViewController{
     func configTableView(){
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "SettingsCell", bundle: nil), forCellReuseIdentifier: "SettingsCell")
+        tableView.register(UINib(nibName: SettingsCell.identifier, bundle: nil), forCellReuseIdentifier: SettingsCell.identifier)
         tableView.layer.cornerRadius = 30
         
         tableViewHeight.constant = view.frame.height * 0.4
@@ -67,9 +67,19 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as! SettingsCell
-        cell.settingsLabel.text = accountSettingsLabel[indexPath.row]
-        cell.settingsImage.image = accountSettingsImages[indexPath.row]
-        return cell
+        
+        if(indexPath.row != 4){
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: accountSettingsLabel[indexPath.row])
+            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+            cell.settingsImage.image = accountSettingsImages[indexPath.row]
+            cell.settingsLabel.attributedText = attributeString
+            return cell
+        }else{
+            cell.settingsLabel.text = accountSettingsLabel[indexPath.row]
+            cell.settingsImage.image = accountSettingsImages[indexPath.row]
+            return cell
+        }
+
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

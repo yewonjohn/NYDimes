@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		29DE50EC159B4CFAD812F24E /* Pods_NYDimes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B748F6F7CEFD20E66B4C5AF1 /* Pods_NYDimes.framework */; };
 		442AA1C1253FD33C00891195 /* NYPickerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442AA1C0253FD33C00891195 /* NYPickerLabel.swift */; };
+		445ADBFC25407CCC008864B6 /* NYPickerTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445ADBFB25407CCC008864B6 /* NYPickerTitleLabel.swift */; };
+		445ADC0725408267008864B6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445ADC0625408267008864B6 /* Constants.swift */; };
 		449A2615253741CA0035CAEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A2614253741CA0035CAEB /* AppDelegate.swift */; };
 		449A2617253741CA0035CAEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A2616253741CA0035CAEB /* SceneDelegate.swift */; };
 		449A2619253741CA0035CAEB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A2618253741CA0035CAEB /* LoginViewController.swift */; };
@@ -88,6 +90,8 @@
 
 /* Begin PBXFileReference section */
 		442AA1C0253FD33C00891195 /* NYPickerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYPickerLabel.swift; sourceTree = "<group>"; };
+		445ADBFB25407CCC008864B6 /* NYPickerTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYPickerTitleLabel.swift; sourceTree = "<group>"; };
+		445ADC0625408267008864B6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		449A2611253741CA0035CAEB /* NYDimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYDimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		449A2614253741CA0035CAEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		449A2616253741CA0035CAEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -308,6 +312,7 @@
 				44EE919F253D40E60039F0A8 /* GradientImageView.swift */,
 				44FC7B76253FCD3F00C7614D /* NYSearchButton.swift */,
 				442AA1C0253FD33C00891195 /* NYPickerLabel.swift */,
+				445ADBFB25407CCC008864B6 /* NYPickerTitleLabel.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -365,6 +370,7 @@
 			children = (
 				449A277C2538A5E30035CAEB /* UIKit + Extensions.swift */,
 				44FC7B06253F894800C7614D /* Animations.swift */,
+				445ADC0625408267008864B6 /* Constants.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -678,6 +684,7 @@
 				449A27DE253924870035CAEB /* ArticleModel.swift in Sources */,
 				44FC7B01253F828A00C7614D /* SavedCell.swift in Sources */,
 				44FC7B0C253FAC8D00C7614D /* SavedViewModel.swift in Sources */,
+				445ADBFC25407CCC008864B6 /* NYPickerTitleLabel.swift in Sources */,
 				449A264C25375B3A0035CAEB /* Fonts.swift in Sources */,
 				44FC7B77253FCD3F00C7614D /* NYSearchButton.swift in Sources */,
 				449A27A32538A8DD0035CAEB /* AuthManager.swift in Sources */,
@@ -704,6 +711,7 @@
 				449A265625375B4F0035CAEB /* NYButton.swift in Sources */,
 				449A27A82538AD380035CAEB /* TabBarViewController.swift in Sources */,
 				44FC7AAB253E32E200C7614D /* SettingsCell.swift in Sources */,
+				445ADC0725408267008864B6 /* Constants.swift in Sources */,
 				449A2617253741CA0035CAEB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

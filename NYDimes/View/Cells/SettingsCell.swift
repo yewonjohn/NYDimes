@@ -9,8 +9,15 @@ import UIKit
 
 class SettingsCell: UITableViewCell {
 
+    //MARK:- Outlets
     @IBOutlet weak var settingsLabel: UILabel!
     @IBOutlet weak var settingsImage: UIImageView!
+    
+    //MARK:- Propeties
+
+    static let identifier = "SettingsCell"
+
+    //MARK:- LifeCycle Methods
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

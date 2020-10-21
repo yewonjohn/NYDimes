@@ -28,7 +28,6 @@ class SavedViewController : UIViewController{
         if(viewModel.getUser() != nil){
             getSavedArticles()
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,7 +57,7 @@ class SavedViewController : UIViewController{
     func configTableView(){
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "SavedCell", bundle: nil), forCellReuseIdentifier: "SavedCell")
+        tableView.register(UINib(nibName: SavedCell.identifier, bundle: nil), forCellReuseIdentifier: SavedCell.identifier)
     }
 
 }
@@ -69,7 +68,7 @@ extension SavedViewController : UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SavedCell", for: indexPath) as! SavedCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SavedCell.identifier, for: indexPath) as! SavedCell
         //delegate set for CellSwipeKit
         cell.delegate = self
         cell.articleTitle.text = listOfArticles[indexPath.row].title

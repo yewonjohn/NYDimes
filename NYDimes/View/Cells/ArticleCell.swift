@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ArticleCell: UICollectionViewCell{
     
@@ -44,9 +45,11 @@ class ArticleCell: UICollectionViewCell{
     }
     
     //MARK:- Layout Config
-    func configureImage(with image: UIImage){
+    func configureImage(with url: String){
         contentView.addSubview(articleImage)
-        articleImage.image = image
+        
+        let url = URL(string: url)
+        articleImage.kf.setImage(with: url)
         articleImage.contentMode = .scaleAspectFill
         articleImage.frame = contentView.bounds
         configureGradient()

@@ -5,7 +5,7 @@
 //  Created by John Kim on 10/20/20.
 //
 
-//Article Model for API fetching USING DECODABLE METHOD (for practice)
+//Article Model for API fetching USING DECODABLE METHOD (FOR PRACTICE! NOT FOR USE!)
 
 struct ArticleResults: Decodable{
     var results: [ArticleModelDecodable]?

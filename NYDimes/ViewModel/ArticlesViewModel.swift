@@ -14,7 +14,6 @@ class ArticlesViewModel{
     let articleAPI = ArticleManager()
     let articleDB = SavedArticleManager()
 
-    
     func getArticles(_ type: String, _ days: Int, completion: @escaping ((_ articles:[ArticleModel])->Void)){
         articleAPI.getArticles(type: type, days: days){ (articleArray) in
             completion(articleArray)
