@@ -30,7 +30,38 @@ class ArticleManager {
             case let .failure(error):
                 print(error)
             }
+            print(resultArticles)
                 completion(resultArticles)
         }
+    }
+    //MARK:-- IMPLEMENTING URLSESSION FOR PRACTICE
+    func getArticlesURLSession(type: String, days: Int, completion: @escaping ((_ articles:[ArticleModel])->Void)){
+        var resultArticles = [ArticleModel]()
+        let apiKey = "xhCbQFpLJv0wgUALuxi21dzp3pl873cb"
+
+        let session = URLSession.shared
+        let url = URL(string: "https://api.nytimes.com/svc/mostpopular/v2/\(type)/\(days).json?api-key=\(apiKey)")!
+        let task = session.dataTask(with: url, completionHandler: { data, response, error in
+            // Check the response
+            print(response)
+            // Check if an error occured
+            if error != nil {
+            // HERE you can manage the error
+                print(error)
+                return
+            }
+            // Serialize the data into an object
+            do {
+                
+                let json = try JSONDecoder().decode(ArticleResults.self, from: data! )
+                    //try JSONSerialization.jsonObject(with: data!, options: [])
+                print(json)
+                completion(resultArticles)
+            } catch {
+                print("Error during JSON serialization: \(error.localizedDescription)")
+            }
+                    
+            })
+        task.resume()
     }
 }

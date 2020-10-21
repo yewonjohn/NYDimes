@@ -15,13 +15,20 @@ class ArticlesViewController: UIViewController{
     //MARK:- Properties
     let viewModel = ArticlesViewModel()
     var listOfArticles = [ArticleModel]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        viewModel.getArticles("viewed", 1){ (articleArray) in
+//            self.listOfArticles = articleArray
+//            self.articleCollectionView.reloadData()
+//        }
+        
         viewModel.getArticles("viewed", 1){ (articleArray) in
-            self.listOfArticles = articleArray
-            self.articleCollectionView.reloadData()
+            DispatchQueue.main.async {
+                self.listOfArticles = articleArray
+                self.articleCollectionView.reloadData()
+            }
         }
         
         let layout = UICollectionViewFlowLayout()
@@ -30,20 +37,12 @@ class ArticlesViewController: UIViewController{
         articleCollectionView.delegate = self
         articleCollectionView.dataSource = self
         articleCollectionView.register(ArticleCell.self, forCellWithReuseIdentifier: ArticleCell.identifier)
-        
     }
-    
-//    @objc func saveButtonClicked(sender: UIButton){
-//        print("button Clicked")
-////        pulse(button: saveButton)
-//    }
-    
-    
-    
 }
 
 //MARK:- CollectionView Data Source
 extension ArticlesViewController: UICollectionViewDataSource{
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return listOfArticles.count
     }
@@ -54,6 +53,7 @@ extension ArticlesViewController: UICollectionViewDataSource{
         cell.layer.masksToBounds = true
         
         //datasource for all cell properties
+        cell.article = listOfArticles[indexPath.row]
         cell.configureImage(with: #imageLiteral(resourceName: "exampleBackground2"))
         cell.configureTitle(with: listOfArticles[indexPath.row].title ?? "No Title")
         cell.configureButton()
@@ -62,10 +62,6 @@ extension ArticlesViewController: UICollectionViewDataSource{
         return cell
     }
 
-    @objc func saveButtonClicked(){
-        print("button Clicked")
-//        pulse(button: saveButton)
-    }
 }
 
 

@@ -58,6 +58,11 @@
 		44FC7ABC253E570700C7614D /* NYGoogleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC7ABB253E570700C7614D /* NYGoogleButton.swift */; };
 		44FC7AE2253E6A5E00C7614D /* NYGuestButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC7AE1253E6A5E00C7614D /* NYGuestButton.swift */; };
 		44FC7AF0253E81A900C7614D /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC7AEF253E81A900C7614D /* SavedViewController.swift */; };
+		44FC7AF8253F7A1B00C7614D /* ArticleModelDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC7AF7253F7A1B00C7614D /* ArticleModelDecodable.swift */; };
+		44FC7B01253F828A00C7614D /* SavedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC7AFF253F828A00C7614D /* SavedCell.swift */; };
+		44FC7B02253F828A00C7614D /* SavedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44FC7B00253F828A00C7614D /* SavedCell.xib */; };
+		44FC7B07253F894800C7614D /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC7B06253F894800C7614D /* Animations.swift */; };
+		44FC7B0C253FAC8D00C7614D /* SavedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC7B0B253FAC8D00C7614D /* SavedViewModel.swift */; };
 		CC97AA338356D85C8D82FA6A /* Pods_NYDimesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71A261EB0476ADEBABF1A9EE /* Pods_NYDimesTests.framework */; };
 		DEF4BAE73D57FF9387D2FC23 /* Pods_NYDimes_NYDimesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E348AC3A827CDB7E7740892 /* Pods_NYDimes_NYDimesUITests.framework */; };
 /* End PBXBuildFile section */
@@ -136,6 +141,11 @@
 		44FC7ABB253E570700C7614D /* NYGoogleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYGoogleButton.swift; sourceTree = "<group>"; };
 		44FC7AE1253E6A5E00C7614D /* NYGuestButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYGuestButton.swift; sourceTree = "<group>"; };
 		44FC7AEF253E81A900C7614D /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
+		44FC7AF7253F7A1B00C7614D /* ArticleModelDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModelDecodable.swift; sourceTree = "<group>"; };
+		44FC7AFF253F828A00C7614D /* SavedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCell.swift; sourceTree = "<group>"; };
+		44FC7B00253F828A00C7614D /* SavedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavedCell.xib; sourceTree = "<group>"; };
+		44FC7B06253F894800C7614D /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
+		44FC7B0B253FAC8D00C7614D /* SavedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewModel.swift; sourceTree = "<group>"; };
 		540423F35A1B4ADAFD7F7FB8 /* Pods-NYDimes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYDimes.debug.xcconfig"; path = "Target Support Files/Pods-NYDimes/Pods-NYDimes.debug.xcconfig"; sourceTree = "<group>"; };
 		5E348AC3A827CDB7E7740892 /* Pods_NYDimes_NYDimesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYDimes_NYDimesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71A261EB0476ADEBABF1A9EE /* Pods_NYDimesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYDimesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -248,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				449A27DD253924870035CAEB /* ArticleModel.swift */,
+				44FC7AF7253F7A1B00C7614D /* ArticleModelDecodable.swift */,
 				449A27DC2539246A0035CAEB /* Network */,
 			);
 			path = Model;
@@ -258,6 +269,7 @@
 			children = (
 				44EE919A253D3A0A0039F0A8 /* ArticlesViewModel.swift */,
 				44FC7AB6253E358200C7614D /* ProfileViewModel.swift */,
+				44FC7B0B253FAC8D00C7614D /* SavedViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -326,6 +338,8 @@
 				44EE918D253CD8010039F0A8 /* ArticleCell.swift */,
 				44FC7AA9253E32E200C7614D /* SettingsCell.swift */,
 				44FC7AAA253E32E200C7614D /* SettingsCell.xib */,
+				44FC7AFF253F828A00C7614D /* SavedCell.swift */,
+				44FC7B00253F828A00C7614D /* SavedCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -344,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				449A277C2538A5E30035CAEB /* UIKit + Extensions.swift */,
+				44FC7B06253F894800C7614D /* Animations.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -489,6 +504,7 @@
 				449A267325375C440035CAEB /* Poppins-ThinItalic.ttf in Resources */,
 				449A266E25375C440035CAEB /* Poppins-Bold.ttf in Resources */,
 				449A268525375F0F0035CAEB /* GoogleService-Info.plist in Resources */,
+				44FC7B02253F828A00C7614D /* SavedCell.xib in Resources */,
 				449A268025375C440035CAEB /* Poppins-Regular.ttf in Resources */,
 				449A267F25375C440035CAEB /* Poppins-MediumItalic.ttf in Resources */,
 				449A266F25375C440035CAEB /* Poppins-Thin.ttf in Resources */,
@@ -654,6 +670,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				449A27DE253924870035CAEB /* ArticleModel.swift in Sources */,
+				44FC7B01253F828A00C7614D /* SavedCell.swift in Sources */,
+				44FC7B0C253FAC8D00C7614D /* SavedViewModel.swift in Sources */,
 				449A264C25375B3A0035CAEB /* Fonts.swift in Sources */,
 				449A27A32538A8DD0035CAEB /* AuthManager.swift in Sources */,
 				44EE9193253CDE2A0039F0A8 /* NYTextField.swift in Sources */,
@@ -666,12 +684,14 @@
 				449A27752538A4EC0035CAEB /* SignUpViewController.swift in Sources */,
 				44FC7AA2253E2FED00C7614D /* ProfileViewController.swift in Sources */,
 				44FC7ABC253E570700C7614D /* NYGoogleButton.swift in Sources */,
+				44FC7B07253F894800C7614D /* Animations.swift in Sources */,
 				44FC7AE2253E6A5E00C7614D /* NYGuestButton.swift in Sources */,
 				449A27B02538B5F10035CAEB /* ArticleManager.swift in Sources */,
 				449A265125375B420035CAEB /* Colors.swift in Sources */,
 				449A2619253741CA0035CAEB /* LoginViewController.swift in Sources */,
 				44FC7A9D253DFBC000C7614D /* SavedArticleManager.swift in Sources */,
 				449A277D2538A5E30035CAEB /* UIKit + Extensions.swift in Sources */,
+				44FC7AF8253F7A1B00C7614D /* ArticleModelDecodable.swift in Sources */,
 				449A2615253741CA0035CAEB /* AppDelegate.swift in Sources */,
 				449A265625375B4F0035CAEB /* NYButton.swift in Sources */,
 				449A27A82538AD380035CAEB /* TabBarViewController.swift in Sources */,

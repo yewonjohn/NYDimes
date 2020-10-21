@@ -26,7 +26,7 @@ struct ArticleModel {
         self.url = json["url"].stringValue
         self.id = json["id"].intValue
         self.source = json["source"].stringValue
-        self.published = json["published"].stringValue
+        self.published = json["published_date"].stringValue
         self.updated = json["updated"].stringValue
         self.section = json["section"].stringValue
         self.author = json["byline"].stringValue

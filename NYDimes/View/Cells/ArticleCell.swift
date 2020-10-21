@@ -10,19 +10,19 @@ import UIKit
 class ArticleCell: UICollectionViewCell{
     
     static let identifier = "ArticleCell"
-    private let saveClicked = false
-    
-     let articleImage = UIImageView()
+    private let viewModel = ArticlesViewModel()
+    var article : ArticleModel?
+//    private var saveClicked = false
+
+    let articleImage = UIImageView()
     private let articleTitle = UILabel()
     private let gradientView = GradientImageView(colors: [#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),#colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)], gradientDirection: .upDown)
     let saveButton = UIButton()
     private let authorLabel = UILabel()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
     
-//        configureButton()
     }
     required init?(coder: NSCoder) {
         fatalError()
@@ -63,20 +63,16 @@ class ArticleCell: UICollectionViewCell{
     
     func configureButton(){
         articleImage.addSubview(saveButton)
-        saveButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         saveButton.setBackgroundImage(UIImage(systemName: "heart"), for: .normal)
-//        saveButton.backgroundImage(for: .normal)?.withTintColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
-//        saveButton.addTarget(self, action: #selector(saveButtonClicked), for: .touchUpInside)
-        let singleTap = UITapGestureRecognizer(target: self, action: #selector(saveButtonClicked))
-        saveButton.isUserInteractionEnabled = true
-        saveButton.addGestureRecognizer(singleTap)
-        
+        saveButton.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         saveButton.trailingAnchor.constraint(equalTo: articleImage.trailingAnchor, constant: -5).isActive = true
         saveButton.bottomAnchor.constraint(equalTo: articleImage.bottomAnchor, constant: -5).isActive = true
         saveButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
         saveButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
         
+        saveButton.addTarget(self, action: #selector(saveButtonClicked(button:)), for: .touchUpInside)
+
     }
     
     func configureAuthors(authors: String){
@@ -93,38 +89,25 @@ class ArticleCell: UICollectionViewCell{
         authorLabel.trailingAnchor.constraint(equalTo: saveButton.leadingAnchor, constant: -3).isActive = true
         authorLabel.bottomAnchor.constraint(equalTo: articleImage.bottomAnchor, constant: -5).isActive = true
     }
-    //MARK:-- Animation Config
-    func pulse(button: UIButton){
-        if(!saveClicked){
-            UIView.animate(withDuration: 2.0,
-              delay: 0,
-              usingSpringWithDamping: 0.2,
-              initialSpringVelocity: 6.0,
-              options: .allowUserInteraction,
-              animations: {
-                button.transform = .identity
-                button.setBackgroundImage(UIImage(systemName: "heart.fill"), for: .normal)
-              },
-              completion: nil)
-        }else{
-            UIView.animate(withDuration: 2.0,
-              delay: 0,
-              usingSpringWithDamping: 0.2,
-              initialSpringVelocity: 6.0,
-              options: .allowUserInteraction,
-              animations: {
-                button.transform = .identity
-                button.setBackgroundImage(UIImage(systemName: "heart"), for: .normal)
-              },
-              completion: nil)
-        }
-
-    }
     
     //MARK:-- User Interaction
-    @objc private func saveButtonClicked(){
-        print("button Clicked")
-        pulse(button: saveButton)
+    @objc func saveButtonClicked(button: UIButton){
+        guard let article = article else {return}
+        viewModel.saveArticle(article: article)
+        Animations().pulse(button: button)
+    }
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        guard isUserInteractionEnabled else { return nil }
+        guard !isHidden else { return nil }
+        guard alpha >= 0.01 else { return nil }
+        guard self.point(inside: point, with: event) else { return nil }
+        
+        // add one of these blocks for each button in our collection view cell we want to actually work
+        if self.saveButton.point(inside: convert(point, to: saveButton), with: event) {
+            return self.saveButton
+        }
+        return super.hitTest(point, with: event)
     }
     
 //    override func layoutIfNeeded() {
@@ -132,9 +115,9 @@ class ArticleCell: UICollectionViewCell{
 //        imageView.frame = contentView.bounds
 //    }
     
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//        articleImage.image = nil
-//    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        articleImage.image = nil
+    }
     
 }
