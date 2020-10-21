@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     var window: UIWindow?
     
-
+    //MARK:- main application method
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         //Google Sign in
         GIDSignIn.sharedInstance()?.clientID = "989075722363-pvfa4c9v2m1r6o60b9r7v869188ovia8.apps.googleusercontent.com"
         GIDSignIn.sharedInstance()?.delegate = self
-
 
         return true
     }
@@ -42,7 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         auth.loginGoogle(credential: credential)
         
     }
-
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
         // ...

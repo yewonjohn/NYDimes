@@ -11,32 +11,69 @@ class ArticlesViewController: UIViewController{
     
     //MARK:- IBOutlets
     @IBOutlet weak var articleCollectionView: UICollectionView!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var typePicker: UIPickerView!
+    @IBOutlet weak var searchButton: UIButton!
     
     //MARK:- Properties
     let viewModel = ArticlesViewModel()
     var listOfArticles = [ArticleModel]()
+    let typePickerData = ["emailed","shared","viewed"]
+    let daysPickerData = [1,7,30]
+    var type = "emailed"
+    var days = 1
     
+    //MARK:- LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        viewModel.getArticles("viewed", 1){ (articleArray) in
-//            self.listOfArticles = articleArray
-//            self.articleCollectionView.reloadData()
-//        }
-        
-        viewModel.getArticles("viewed", 1){ (articleArray) in
+
+        getArticles()
+        configureCollectionView()
+        configureTableView()
+        configPickerView()
+//        configButton()
+    }
+    
+    //MARK:-- Configuration & Layout
+    func getArticles(){
+        print(type)
+        print(days)
+        viewModel.getArticles(type, days){ (articleArray) in
             DispatchQueue.main.async {
                 self.listOfArticles = articleArray
                 self.articleCollectionView.reloadData()
             }
         }
-        
+    }
+    
+    func configureCollectionView(){
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: view.frame.size.width/3, height: view.frame.size.height/3)
-        
+    }
+    
+    func configureTableView(){
         articleCollectionView.delegate = self
         articleCollectionView.dataSource = self
         articleCollectionView.register(ArticleCell.self, forCellWithReuseIdentifier: ArticleCell.identifier)
+    }
+    
+    func configPickerView(){
+        typePicker.delegate = self
+        typePicker.dataSource = self
+        typePicker.layer.cornerRadius = 15
+        typePicker.setValue(UIColor.black, forKeyPath: "textColor")
+//        typePicker.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 0.7)
+    }
+    
+//    func configButton(){
+//        searchButton.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 0.3)
+//    }
+    
+    //MARK:- User Interaction
+    
+    @IBAction func searchButton(_ sender: UIButton) {
+        print("pressed")
+        getArticles()
     }
 }
 
@@ -73,10 +110,6 @@ extension ArticlesViewController: UICollectionViewDelegateFlowLayout{
         return CGSize(width: collectionView.frame.width * 0.95, height: collectionView.frame.height * 0.3)
 
     }
-
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//       return UIEdgeInsets(top: 0, left: 45, bottom: 0, right: 0)
-//    }
 }
 
 extension ArticlesViewController: UICollectionViewDelegate{
@@ -88,5 +121,54 @@ extension ArticlesViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         print("deselectie")
     }
+    
+}
+//MARK:-- UIPicker Delegate & DataSource
+extension ArticlesViewController: UIPickerViewDelegate{
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if(component == 1){
+            type = typePickerData[row]
+        }
+        if(component == 3){
+            days = daysPickerData[row]
+        }
+    }
+}
+extension ArticlesViewController: UIPickerViewDataSource{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 4
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if(component == 1){
+            return typePickerData.count
+        }else if(component == 3){
+            return daysPickerData.count
+        }else{
+            return 1
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = (view as? NYPickerLabel) ?? NYPickerLabel()
+
+        // where data is an Array of String
+        switch component {
+        case 0:
+            label.text = "Type:"
+        case 1:
+            label.text = typePickerData[row]
+        case 2:
+            label.text = "Days:"
+        case 3:
+            label.text = "\(daysPickerData[row])"
+        default:
+            print("nothing")
+        }
+        return label
+    }
+    
+    
     
 }

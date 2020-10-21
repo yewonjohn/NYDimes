@@ -8,17 +8,19 @@
 import UIKit
 
 class ProfileViewController: UIViewController{
-    
+    //MARK:- Outlets
     @IBOutlet weak var helloLabel: UILabel!
     @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
+    //MARK:- Properties
     var accountSettingsLabel = [String]()
     var accountSettingsImages = [UIImage]()
     
     let profileViewModel = ProfileViewModel()
     
+    //MARK:- Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,7 +29,11 @@ class ProfileViewController: UIViewController{
         
         setHelloLabel()
         setLoginText()
-        
+        configTableView()
+
+    }
+    //MARK:- Configurations
+    func configTableView(){
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "SettingsCell", bundle: nil), forCellReuseIdentifier: "SettingsCell")

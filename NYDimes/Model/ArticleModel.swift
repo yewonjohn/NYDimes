@@ -21,6 +21,7 @@ struct ArticleModel {
     var title: String?
     var abstract: String?
     var image: MediaModel?
+    var documentId: String?
     
     init(json:JSON) {
         self.url = json["url"].stringValue

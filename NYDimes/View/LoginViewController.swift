@@ -47,17 +47,26 @@ class LoginViewController: UIViewController {
         }
         
         createObservers()
-        
+        configureLayout()
+        googleSignConfig()
+        layoutConfig()
+
+    }
+    //MARK:- Configs
+    func configureLayout(){
         //NavBar Transparancy
         navigationController?.setup()
         //Keyboard Management
         IQKeyboardManager.shared().isEnabled = true
         self.hideKeyboardWhenTappedAround()
-        
+    }
+    func googleSignConfig(){
         //Google Sign in
         GIDSignIn.sharedInstance()?.presentingViewController = self
-        GIDSignIn.sharedInstance().signIn()
-        
+        GIDSignIn.sharedInstance()?.signIn()
+    }
+    
+    func layoutConfig(){
         //Layout Config
         emailTextField.placeholder = "Email"
         passwordTextField.placeholder = "Password"
@@ -71,11 +80,6 @@ class LoginViewController: UIViewController {
         print("Signed in with Google!")
         self.performSegue(withIdentifier: "LoginToTabBar", sender: self)
     }
-
-
-
-    
-
 
 }
 

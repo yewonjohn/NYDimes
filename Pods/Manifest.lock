@@ -351,8 +351,8 @@ PODS:
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
   - PromisesObjC (1.2.9)
-  - RxSwift (5.1.1)
   - SwiftyJSON (5.0.0)
+  - SwipeCellKit (2.7.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -362,8 +362,8 @@ DEPENDENCIES:
   - GoogleSignIn
   - IQKeyboardManager
   - Kingfisher (~> 5.14)
-  - RxSwift
   - SwiftyJSON
+  - SwipeCellKit
 
 SPEC REPOS:
   trunk:
@@ -392,8 +392,8 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
-    - RxSwift
     - SwiftyJSON
+    - SwipeCellKit
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -421,9 +421,9 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
-  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
 
-PODFILE CHECKSUM: 2178e74e088fa47f1214c595227802f83fa8f6b0
+PODFILE CHECKSUM: 7c2d254ffa768e3a2ff3e89a26e841a48ae36714
 
 COCOAPODS: 1.9.3

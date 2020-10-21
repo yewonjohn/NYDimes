@@ -7,8 +7,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Poppins-Regular.ttf">
-            <string>Poppins-Regular</string>
+        <array key="Poppins-Light.ttf">
+            <string>Poppins-Light</string>
+        </array>
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
         </array>
     </customFonts>
     <objects>
@@ -27,19 +30,20 @@
                             <constraint firstAttribute="width" secondItem="cM9-z5-M7o" secondAttribute="height" multiplier="440:293" id="rAy-sM-4As"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Article Title Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctM-Hx-oZ7">
-                        <rect key="frame" x="198.5" y="5" width="120" height="21"/>
-                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Article Title Here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctM-Hx-oZ7">
+                        <rect key="frame" x="198.5" y="5" width="97.5" height="17"/>
+                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
                         <color key="textColor" red="0.36260707489999999" green="0.36260707489999999" blue="0.36260707489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authors here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nb-J9-rqD">
-                        <rect key="frame" x="198.5" y="103" width="96" height="21"/>
-                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authors here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nb-J9-rqD">
+                        <rect key="frame" x="198.5" y="107" width="76" height="17"/>
+                        <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="12"/>
                         <color key="textColor" red="0.36260707489999999" green="0.36260707489999999" blue="0.36260707489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" red="0.95486992390000003" green="0.95486992390000003" blue="0.95486992390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="ctM-Hx-oZ7" firstAttribute="leading" secondItem="cM9-z5-M7o" secondAttribute="trailing" constant="5" id="2u1-Q4-5qN"/>
                     <constraint firstAttribute="bottom" secondItem="cM9-z5-M7o" secondAttribute="bottom" id="3T1-La-Bb2"/>
@@ -55,6 +59,7 @@
                 <outlet property="articleAuthor" destination="7nb-J9-rqD" id="ECu-cG-ojP"/>
                 <outlet property="articleImage" destination="cM9-z5-M7o" id="dqg-hK-VYz"/>
                 <outlet property="articleTitle" destination="ctM-Hx-oZ7" id="6ZG-UA-Toi"/>
+                <outlet property="containerView" destination="H2p-sc-9uM" id="mUc-XE-vXa"/>
             </connections>
             <point key="canvasLocation" x="209.42028985507247" y="127.56696428571428"/>
         </tableViewCell>

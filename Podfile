@@ -13,7 +13,7 @@ target 'NYDimes' do
   pod 'IQKeyboardManager'
   pod 'Alamofire'
   pod 'SwiftyJSON'
-  pod 'RxSwift'
+  pod 'SwipeCellKit'
   pod 'Kingfisher', '~> 5.14'
 
 

@@ -9,17 +9,21 @@ import UIKit
 
 class ArticleCell: UICollectionViewCell{
     
+    //MARK:- Properties
     static let identifier = "ArticleCell"
     private let viewModel = ArticlesViewModel()
     var article : ArticleModel?
 //    private var saveClicked = false
 
+    //MARK:- UI Properties
     let articleImage = UIImageView()
     private let articleTitle = UILabel()
     private let gradientView = GradientImageView(colors: [#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),#colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)], gradientDirection: .upDown)
     let saveButton = UIButton()
     private let authorLabel = UILabel()
     
+    //MARK:- LifeCycle Methods
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     
@@ -28,6 +32,17 @@ class ArticleCell: UICollectionViewCell{
         fatalError()
     }
     
+//    override func layoutIfNeeded() {
+//        super.layoutIfNeeded()
+//        imageView.frame = contentView.bounds
+//    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        articleImage.image = nil
+    }
+    
+    //MARK:- Layout Config
     func configureImage(with image: UIImage){
         contentView.addSubview(articleImage)
         articleImage.image = image
@@ -45,7 +60,6 @@ class ArticleCell: UICollectionViewCell{
         gradientView.widthAnchor.constraint(equalTo: self.articleImage.widthAnchor, multiplier: 1.0).isActive = true
         gradientView.heightAnchor.constraint(equalTo: self.articleImage.heightAnchor, multiplier: 1.0).isActive = true
     }
-    
     func configureTitle(with text: String){
         articleImage.addSubview(articleTitle)
         articleTitle.text = text
@@ -53,14 +67,11 @@ class ArticleCell: UICollectionViewCell{
         articleTitle.textColor = .articleTitle
         articleTitle.numberOfLines = 0
         articleTitle.textAlignment = .left
-        
         articleTitle.translatesAutoresizingMaskIntoConstraints = false
-
         articleTitle.leadingAnchor.constraint(equalTo: articleImage.leadingAnchor, constant: 7).isActive = true
         articleTitle.trailingAnchor.constraint(equalTo: articleImage.trailingAnchor).isActive = true
         articleTitle.topAnchor.constraint(equalTo: articleImage.topAnchor, constant: 6).isActive = true
     }
-    
     func configureButton(){
         articleImage.addSubview(saveButton)
         saveButton.setBackgroundImage(UIImage(systemName: "heart"), for: .normal)
@@ -70,11 +81,8 @@ class ArticleCell: UICollectionViewCell{
         saveButton.bottomAnchor.constraint(equalTo: articleImage.bottomAnchor, constant: -5).isActive = true
         saveButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
         saveButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        
         saveButton.addTarget(self, action: #selector(saveButtonClicked(button:)), for: .touchUpInside)
-
     }
-    
     func configureAuthors(authors: String){
         articleImage.addSubview(authorLabel)
         authorLabel.text = authors
@@ -82,21 +90,17 @@ class ArticleCell: UICollectionViewCell{
         authorLabel.textColor = .authors
         authorLabel.numberOfLines = 0
         authorLabel.textAlignment = .left
-        
         authorLabel.translatesAutoresizingMaskIntoConstraints = false
-
         authorLabel.leadingAnchor.constraint(equalTo: articleImage.leadingAnchor, constant: 7).isActive = true
         authorLabel.trailingAnchor.constraint(equalTo: saveButton.leadingAnchor, constant: -3).isActive = true
         authorLabel.bottomAnchor.constraint(equalTo: articleImage.bottomAnchor, constant: -5).isActive = true
     }
-    
     //MARK:-- User Interaction
     @objc func saveButtonClicked(button: UIButton){
         guard let article = article else {return}
         viewModel.saveArticle(article: article)
         Animations().pulse(button: button)
     }
-    
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         guard isUserInteractionEnabled else { return nil }
         guard !isHidden else { return nil }
@@ -109,15 +113,6 @@ class ArticleCell: UICollectionViewCell{
         }
         return super.hitTest(point, with: event)
     }
-    
-//    override func layoutIfNeeded() {
-//        super.layoutIfNeeded()
-//        imageView.frame = contentView.bounds
-//    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        articleImage.image = nil
-    }
+
     
 }

@@ -18,10 +18,14 @@ class SavedArticleManager{
         
         let timeStamp = NSDate().timeIntervalSince1970
         let docRef = db.collection("saved")
+        //creating unique id with email + id
+        guard let id = article.id, let curr = self.currentUser else {return}
+        let docId = "\(id)"+"\(curr)"
         
         docRef.getDocuments{ (snapshot, error) in
-            if let snapshot = snapshot, let id = article.id {
-                self.db.collection("saved").document("\(id)").setData([
+            if let snapshot = snapshot {
+                self.db.collection("saved").document("\(docId)").setData([
+                    "docId":docId,
                     "user":self.currentUser,
                     "id":article.id,
                     "author": article.author,
@@ -74,8 +78,19 @@ class SavedArticleManager{
                     completion(articlesArray)
                 }
             }
+    }
+    
+    func deleteSavedArticle(article: ArticleModel){
+        //using created unique id to delete article
+        guard let id = article.id, let curr = self.currentUser else {return}
+        let docId = "\(id)"+"\(curr)"
         
-        
-        
+        db.collection("saved").document("\(docId)").delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
     }
 }

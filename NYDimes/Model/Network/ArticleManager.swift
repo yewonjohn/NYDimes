@@ -30,7 +30,6 @@ class ArticleManager {
             case let .failure(error):
                 print(error)
             }
-            print(resultArticles)
                 completion(resultArticles)
         }
     }
@@ -55,7 +54,6 @@ class ArticleManager {
                 
                 let json = try JSONDecoder().decode(ArticleResults.self, from: data! )
                     //try JSONSerialization.jsonObject(with: data!, options: [])
-                print(json)
                 completion(resultArticles)
             } catch {
                 print("Error during JSON serialization: \(error.localizedDescription)")

@@ -36,5 +36,9 @@ extension UIFont {
         return UIFont(name: "Poppins-Semibold", size: 12.0)!
     }
     
+    class var pickerLabel: UIFont{
+        return UIFont(name: "Poppins-Regular", size: 12.0)!
+    }
+    
     
 }
