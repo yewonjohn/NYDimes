@@ -42,6 +42,11 @@ class SignUpViewController : UIViewController{
         IQKeyboardManager.shared().isEnabled = true
         self.hideKeyboardWhenTappedAround()
         
+        adjustHeightDynamically()
+
+    }
+    
+    func adjustHeightDynamically(){
         nameHeight.constant = view.frame.height * 0.06
         emailHeight.constant = view.frame.height * 0.06
         passwordHeight.constant = view.frame.height * 0.06
