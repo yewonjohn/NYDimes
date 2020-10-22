@@ -49,6 +49,9 @@
 		449A27B02538B5F10035CAEB /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A27AF2538B5F10035CAEB /* ArticleManager.swift */; };
 		449A27DE253924870035CAEB /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A27DD253924870035CAEB /* ArticleModel.swift */; };
 		449A280925393E3C0035CAEB /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A280825393E3C0035CAEB /* ArticlesViewController.swift */; };
+		44B3E22F2541F0C6003F5656 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B3E22E2541F0C6003F5656 /* LoginViewModel.swift */; };
+		44B3E23A25421421003F5656 /* NYAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B3E23925421421003F5656 /* NYAppleButton.swift */; };
+		44B3E24525422135003F5656 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44B3E23E25422039003F5656 /* Roboto-Medium.ttf */; };
 		44EE918E253CD8010039F0A8 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EE918D253CD8010039F0A8 /* ArticleCell.swift */; };
 		44EE9193253CDE2A0039F0A8 /* NYTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EE9192253CDE2A0039F0A8 /* NYTextField.swift */; };
 		44EE919B253D3A0A0039F0A8 /* ArticlesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EE919A253D3A0A0039F0A8 /* ArticlesViewModel.swift */; };
@@ -136,6 +139,10 @@
 		449A27AF2538B5F10035CAEB /* ArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
 		449A27DD253924870035CAEB /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		449A280825393E3C0035CAEB /* ArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
+		44B3E22A2541ED39003F5656 /* NYDimes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NYDimes.entitlements; sourceTree = "<group>"; };
+		44B3E22E2541F0C6003F5656 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		44B3E23925421421003F5656 /* NYAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYAppleButton.swift; sourceTree = "<group>"; };
+		44B3E23E25422039003F5656 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		44EE918D253CD8010039F0A8 /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		44EE9192253CDE2A0039F0A8 /* NYTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTextField.swift; sourceTree = "<group>"; };
 		44EE919A253D3A0A0039F0A8 /* ArticlesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewModel.swift; sourceTree = "<group>"; };
@@ -231,6 +238,7 @@
 		449A2613253741CA0035CAEB /* NYDimes */ = {
 			isa = PBXGroup;
 			children = (
+				44B3E22A2541ED39003F5656 /* NYDimes.entitlements */,
 				449A2614253741CA0035CAEB /* AppDelegate.swift */,
 				449A2616253741CA0035CAEB /* SceneDelegate.swift */,
 				449A2649253744310035CAEB /* View */,
@@ -275,6 +283,7 @@
 		449A2648253744230035CAEB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				44B3E22E2541F0C6003F5656 /* LoginViewModel.swift */,
 				44EE919A253D3A0A0039F0A8 /* ArticlesViewModel.swift */,
 				44FC7AB6253E358200C7614D /* ProfileViewModel.swift */,
 				44FC7B0B253FAC8D00C7614D /* SavedViewModel.swift */,
@@ -313,6 +322,7 @@
 				44FC7B76253FCD3F00C7614D /* NYSearchButton.swift */,
 				442AA1C0253FD33C00891195 /* NYPickerLabel.swift */,
 				445ADBFB25407CCC008864B6 /* NYPickerTitleLabel.swift */,
+				44B3E23925421421003F5656 /* NYAppleButton.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -332,6 +342,7 @@
 				449A266625375C440035CAEB /* Poppins-Italic.ttf */,
 				449A266325375C440035CAEB /* Poppins-Light.ttf */,
 				449A266725375C440035CAEB /* Poppins-LightItalic.ttf */,
+				44B3E23E25422039003F5656 /* Roboto-Medium.ttf */,
 				449A265D25375C430035CAEB /* Poppins-Medium.ttf */,
 				449A266C25375C440035CAEB /* Poppins-MediumItalic.ttf */,
 				449A266D25375C440035CAEB /* Poppins-Regular.ttf */,
@@ -495,6 +506,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44B3E24525422135003F5656 /* Roboto-Medium.ttf in Resources */,
 				449A267425375C440035CAEB /* OFL.txt in Resources */,
 				449A267D25375C440035CAEB /* Poppins-SemiBoldItalic.ttf in Resources */,
 				449A267225375C440035CAEB /* Poppins-ExtraLightItalic.ttf in Resources */,
@@ -683,6 +695,7 @@
 			files = (
 				449A27DE253924870035CAEB /* ArticleModel.swift in Sources */,
 				44FC7B01253F828A00C7614D /* SavedCell.swift in Sources */,
+				44B3E22F2541F0C6003F5656 /* LoginViewModel.swift in Sources */,
 				44FC7B0C253FAC8D00C7614D /* SavedViewModel.swift in Sources */,
 				445ADBFC25407CCC008864B6 /* NYPickerTitleLabel.swift in Sources */,
 				449A264C25375B3A0035CAEB /* Fonts.swift in Sources */,
@@ -697,6 +710,7 @@
 				44EE91A0253D40E60039F0A8 /* GradientImageView.swift in Sources */,
 				449A27752538A4EC0035CAEB /* SignUpViewController.swift in Sources */,
 				44FC7AA2253E2FED00C7614D /* ProfileViewController.swift in Sources */,
+				44B3E23A25421421003F5656 /* NYAppleButton.swift in Sources */,
 				442AA1C1253FD33C00891195 /* NYPickerLabel.swift in Sources */,
 				44FC7ABC253E570700C7614D /* NYGoogleButton.swift in Sources */,
 				44FC7B07253F894800C7614D /* Animations.swift in Sources */,
@@ -889,17 +903,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NYDimes/NYDimes.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 32F88XU52W;
+				CURRENT_PROJECT_VERSION = 1.1;
+				DEVELOPMENT_TEAM = 6N6H5WV55Y;
 				INFOPLIST_FILE = NYDimes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = co.jykim.NYDimes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -909,17 +928,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NYDimes/NYDimes.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 32F88XU52W;
+				CURRENT_PROJECT_VERSION = 1.1;
+				DEVELOPMENT_TEAM = 6N6H5WV55Y;
 				INFOPLIST_FILE = NYDimes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = co.jykim.NYDimes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -5,14 +5,17 @@
 //  Created by John Kim on 10/15/20.
 //
 
-import Foundation
+import UIKit
 import FirebaseAuth
+import AuthenticationServices
 
 //Firebase calls to all Authentication related tasks
 class AuthManager{
     
     let userDefault = UserDefaults.standard
+    fileprivate var currentNonce: String?
     
+    //MARK:-- Standard EMAIL/PASSWORD LOGIN
     func login(viewController: UIViewController, email: String, password: String){
         
         Auth.auth().signIn(withEmail: email, password: password) {authResult, error in
@@ -30,7 +33,7 @@ class AuthManager{
             }
         }
     }
-    
+    //MARK:-- GOOGLE LOGIN
     func loginGoogle(credential: AuthCredential){
         Auth.auth().signIn(with: credential) { (authResult, error) in
           if let error = error {
@@ -43,7 +46,62 @@ class AuthManager{
           }
         }
     }
+    //MARK:-- APPLE LOGIN
+    func loginApple(viewController: UIViewController){
+        print("loginApple")
+        let request = createAppleIDRequest()
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        
+        authorizationController.delegate = viewController as! ASAuthorizationControllerDelegate
+        authorizationController.presentationContextProvider = viewController as! ASAuthorizationControllerPresentationContextProviding
+        
+        authorizationController.performRequests()
+    }
     
+    private func createAppleIDRequest() -> ASAuthorizationAppleIDRequest {
+        print("createAppleIDRequest")
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName,.email]
+        
+        let nonce = randomNonceString()
+        request.nonce = sha256(nonce)
+        currentNonce = nonce
+        return request
+    }
+    
+    func authorizeAppleFirebase(credential: ASAuthorizationAppleIDCredential, completion: @escaping (_ signedIn:Bool)->Void){
+        print("authorizeAppleFirebase")
+
+        guard let nonce = currentNonce else{
+            fatalError()
+        }
+        guard let appleIDToken = credential.identityToken else{
+            print("unable to fetch token")
+            return
+        }
+        guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else{
+            print("unable to serialize token from data: \(appleIDToken.debugDescription)")
+            return
+        }
+        let appleCredential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
+        Auth.auth().signIn(with: appleCredential){ (authDataResult, error) in
+            if(error != nil){
+                print(error?.localizedDescription)
+            }
+            
+            if let user = authDataResult?.user{
+                print("successfully signed in with Apple")
+                self.userDefault.set(true, forKey: "usersignedin")
+                self.userDefault.synchronize()
+                completion(true)
+            }
+            
+        }
+    }
+
+    
+    //MARK:-- REGISTER ACCOUNT w/ email and password
     func register(viewController: UIViewController, email: String, password: String, name: String){
         
         //registering using email + password
@@ -67,7 +125,7 @@ class AuthManager{
             }
         }
     }
-    
+    //MARK:-- GET CURRENT ACCOUNT
     func getDisplayName() -> String?{
         let displayName = Auth.auth().currentUser?.displayName
         
@@ -86,3 +144,4 @@ class AuthManager{
     
     
 }
+

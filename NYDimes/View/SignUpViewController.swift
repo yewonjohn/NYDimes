@@ -15,6 +15,12 @@ class SignUpViewController : UIViewController{
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
     
+    @IBOutlet weak var nameHeight: NSLayoutConstraint!
+    @IBOutlet weak var emailHeight: NSLayoutConstraint!
+    @IBOutlet weak var passwordHeight: NSLayoutConstraint!
+    @IBOutlet weak var createButtonHeight: NSLayoutConstraint!
+    
+    
     // MARK: - Properties
     let auth = AuthManager()
     
@@ -35,6 +41,11 @@ class SignUpViewController : UIViewController{
         //Keyboard Management
         IQKeyboardManager.shared().isEnabled = true
         self.hideKeyboardWhenTappedAround()
+        
+        nameHeight.constant = view.frame.height * 0.06
+        emailHeight.constant = view.frame.height * 0.06
+        passwordHeight.constant = view.frame.height * 0.06
+        createButtonHeight.constant = view.frame.height * 0.06
     }
     
 }

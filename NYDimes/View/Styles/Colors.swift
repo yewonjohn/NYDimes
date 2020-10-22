@@ -32,6 +32,9 @@ extension UIColor {
     class var pickerLabel: UIColor{
         return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     }
+    class var appleButton: UIColor{
+        return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5417112586)
+    }
     
     
 }

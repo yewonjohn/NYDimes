@@ -23,7 +23,8 @@ class NYGoogleButton: GIDSignInButton{
     
     func setupButton(){
         layer.cornerRadius  = frame.size.height/4
-        
+        style = .wide
+
     }
     
     

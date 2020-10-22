@@ -14,7 +14,7 @@ class ArticleCell: UICollectionViewCell{
     static let identifier = "ArticleCell"
     private let viewModel = ArticlesViewModel()
     var article : ArticleModel?
-    private var saveClicked = false
+//    private var saveClicked = false
 
     //MARK:- UI Properties
     private let articleImage = UIImageView()
@@ -115,13 +115,12 @@ class ArticleCell: UICollectionViewCell{
     }
     //MARK:-- User Interaction
     @objc func saveButtonClicked(button: UIButton){
-        if(!saveClicked){
+
             guard let article = article else {return}
             viewModel.saveArticle(article: article)
             Animations().pulse(button: button)
             
-            saveClicked = true
-        }
+        
     }
     
     @objc func arrowClicked(){

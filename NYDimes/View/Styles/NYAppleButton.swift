@@ -1,13 +1,13 @@
 //
-//  NYGuestButton.swift
+//  NYAppleButton.swift
 //  NYDimes
 //
-//  Created by John Kim on 10/19/20.
+//  Created by John Kim on 10/22/20.
 //
 
 import UIKit
 
-class NYGuestButton: UIButton{
+class NYAppleButton: UIButton{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,11 +23,11 @@ class NYGuestButton: UIButton{
     
     private func setupButton() {
         backgroundColor     = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        titleLabel?.font    = .guestButton
+        titleLabel?.font    = .appleButton
 //        layer.cornerRadius  = frame.size.height/4
         setTitleColor(.appleButton, for: .normal)
-        setTitle("Sign in as Guest", for: .normal)
-
+        setTitle("Sign in with Apple", for: .normal)
+        
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 0.0, height: 4.0)
         layer.masksToBounds = false

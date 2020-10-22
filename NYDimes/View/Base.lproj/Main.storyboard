@@ -14,6 +14,9 @@
         <array key="Poppins-SemiBold.ttf">
             <string>Poppins-SemiBold</string>
         </array>
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Navigation Controller-->
@@ -281,7 +284,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wo6-tJ-kdV" customClass="NYTextField" customModule="NYDimes" customModuleProvider="target">
-                                <rect key="frame" x="20" y="363" width="374" height="50"/>
+                                <rect key="frame" x="20" y="318" width="374" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="qNb-ga-es5"/>
                                 </constraints>
@@ -289,22 +292,15 @@
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IV5-dk-8n9" customClass="NYTextField" customModule="NYDimes" customModuleProvider="target">
-                                <rect key="frame" x="20" y="428" width="374" height="50"/>
+                                <rect key="frame" x="20" y="383" width="374" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="tOJ-hg-r3g"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ea-qd-Kg6" customClass="NYGoogleButton" customModule="NYDimes" customModuleProvider="target">
-                                <rect key="frame" x="30" y="722" width="354" height="48"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="9RZ-bK-Xhj"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aow-ko-83w" userLabel="Container">
-                                <rect key="frame" x="52" y="835" width="310" height="22"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aow-ko-83w" userLabel="CreateAccountContainer">
+                                <rect key="frame" x="52" y="830" width="310" height="22"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ve-SK-bqx">
                                         <rect key="frame" x="0.0" y="0.0" width="180" height="22"/>
@@ -339,7 +335,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIB-nS-hew" userLabel="SignInButton" customClass="NYButton" customModule="NYDimes" customModuleProvider="target">
-                                <rect key="frame" x="20" y="493" width="374" height="50"/>
+                                <rect key="frame" x="20" y="448" width="374" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="1Xx-l5-tGq"/>
                                 </constraints>
@@ -348,62 +344,126 @@
                                     <action selector="signIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Psk-Fa-1GX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ShD-e4-gkZ" customClass="NYGuestButton" customModule="NYDimes" customModuleProvider="target">
-                                <rect key="frame" x="34" y="775" width="346" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LoR-GD-8jU" userLabel="GuestButtonContainer">
+                                <rect key="frame" x="20" y="616" width="374" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ShD-e4-gkZ" userLabel="GuestSignin" customClass="NYGuestButton" customModule="NYDimes" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
+                                        <state key="normal" title="Continue as guest">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signInAsGuest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ta5-hE-AFB"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guest" translatesAutoresizingMaskIntoConstraints="NO" id="kXc-63-hWl">
+                                        <rect key="frame" x="7" y="7.5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="kXc-63-hWl" secondAttribute="height" multiplier="1:1" id="2gB-Km-wsz"/>
+                                            <constraint firstAttribute="height" constant="25" id="OhI-3e-w90"/>
+                                            <constraint firstAttribute="width" constant="25" id="g8u-bq-mAi"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="CMW-Gf-hwo"/>
+                                    <constraint firstItem="kXc-63-hWl" firstAttribute="centerY" secondItem="LoR-GD-8jU" secondAttribute="centerY" id="2sD-IS-SXW"/>
+                                    <constraint firstAttribute="height" constant="40" id="4h9-lc-Brh"/>
+                                    <constraint firstAttribute="bottom" secondItem="ShD-e4-gkZ" secondAttribute="bottom" id="4j5-jH-uLu"/>
+                                    <constraint firstAttribute="trailing" secondItem="ShD-e4-gkZ" secondAttribute="trailing" id="IK4-T7-icu"/>
+                                    <constraint firstItem="ShD-e4-gkZ" firstAttribute="top" secondItem="LoR-GD-8jU" secondAttribute="top" id="OQq-ek-ZoY"/>
+                                    <constraint firstItem="ShD-e4-gkZ" firstAttribute="leading" secondItem="LoR-GD-8jU" secondAttribute="leading" id="UEC-9y-A5w"/>
+                                    <constraint firstItem="kXc-63-hWl" firstAttribute="leading" secondItem="LoR-GD-8jU" secondAttribute="leading" constant="7" id="iO8-sl-nh9"/>
                                 </constraints>
-                                <inset key="titleEdgeInsets" minX="52" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
-                                <state key="normal" title="Continue as guest"/>
-                                <connections>
-                                    <action selector="signInAsGuest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ta5-hE-AFB"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guest" translatesAutoresizingMaskIntoConstraints="NO" id="kXc-63-hWl">
-                                <rect key="frame" x="38" y="780" width="30" height="30"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6e0-Vz-Rms" userLabel="AppleButtonContainer">
+                                <rect key="frame" x="20" y="571" width="374" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gY-Ch-Fav" userLabel="AppleSignin" customClass="NYAppleButton" customModule="NYDimes" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
+                                        <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Sign in">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signInAsApple:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mzN-MU-wtV"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appleLogo-1" translatesAutoresizingMaskIntoConstraints="NO" id="uS6-70-GKI" userLabel="AppleLogo">
+                                        <rect key="frame" x="7" y="7.5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="Wha-Vw-z7u"/>
+                                            <constraint firstAttribute="width" secondItem="uS6-70-GKI" secondAttribute="height" multiplier="1:1" id="YUO-Vl-m6v"/>
+                                            <constraint firstAttribute="width" constant="25" id="eed-4l-pDc"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="OhI-3e-w90"/>
-                                    <constraint firstAttribute="width" constant="30" id="g8u-bq-mAi"/>
+                                    <constraint firstItem="7gY-Ch-Fav" firstAttribute="leading" secondItem="6e0-Vz-Rms" secondAttribute="leading" id="BhJ-tf-JDc"/>
+                                    <constraint firstAttribute="height" constant="40" id="Hg6-76-aUY"/>
+                                    <constraint firstAttribute="bottom" secondItem="7gY-Ch-Fav" secondAttribute="bottom" id="Hjx-fc-kKL"/>
+                                    <constraint firstItem="uS6-70-GKI" firstAttribute="leading" secondItem="6e0-Vz-Rms" secondAttribute="leading" constant="7" id="PS5-kF-sz7"/>
+                                    <constraint firstItem="uS6-70-GKI" firstAttribute="centerY" secondItem="6e0-Vz-Rms" secondAttribute="centerY" id="fDA-He-kZ5"/>
+                                    <constraint firstAttribute="trailing" secondItem="7gY-Ch-Fav" secondAttribute="trailing" id="s5q-Yo-AU0"/>
+                                    <constraint firstItem="7gY-Ch-Fav" firstAttribute="top" secondItem="6e0-Vz-Rms" secondAttribute="top" id="tiI-ue-JQh"/>
                                 </constraints>
-                            </imageView>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ea-qd-Kg6" customClass="NYGoogleButton" customModule="NYDimes" customModuleProvider="target">
+                                <rect key="frame" x="16" y="528" width="382" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9RZ-bK-Xhj"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.95486992385786806" green="0.95486992385786806" blue="0.95486992385786806" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="IV5-dk-8n9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="28V-qD-GM8"/>
-                            <constraint firstItem="wo6-tJ-kdV" firstAttribute="top" secondItem="ZGd-61-fa0" secondAttribute="bottom" constant="75" id="2LK-hC-rTV"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Aow-ko-83w" secondAttribute="bottom" constant="5" id="4is-5a-FwC"/>
+                            <constraint firstItem="wo6-tJ-kdV" firstAttribute="top" secondItem="ZGd-61-fa0" secondAttribute="bottom" constant="30" id="2LK-hC-rTV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Aow-ko-83w" secondAttribute="bottom" constant="10" id="4is-5a-FwC"/>
                             <constraint firstItem="wo6-tJ-kdV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="50P-qK-T80"/>
                             <constraint firstItem="8oM-uZ-msW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="APd-Ae-AYF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IV5-dk-8n9" secondAttribute="trailing" constant="20" id="AfI-0n-KBU"/>
-                            <constraint firstItem="ShD-e4-gkZ" firstAttribute="top" secondItem="0ea-qd-Kg6" secondAttribute="bottom" constant="5" id="BKY-E9-eMa"/>
-                            <constraint firstItem="Aow-ko-83w" firstAttribute="top" secondItem="ShD-e4-gkZ" secondAttribute="bottom" constant="20" id="CAe-8E-iQW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oIB-nS-hew" secondAttribute="trailing" constant="20" id="DhA-sd-pR5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wo6-tJ-kdV" secondAttribute="trailing" constant="20" id="EbJ-zX-9Gk"/>
                             <constraint firstItem="8oM-uZ-msW" firstAttribute="top" secondItem="YQ1-UN-IYQ" secondAttribute="bottom" constant="20" id="Hp4-uw-FyF"/>
+                            <constraint firstItem="LoR-GD-8jU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="LRE-7j-fwh"/>
                             <constraint firstItem="Aow-ko-83w" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="O7W-i8-dZK"/>
                             <constraint firstItem="IV5-dk-8n9" firstAttribute="top" secondItem="wo6-tJ-kdV" secondAttribute="bottom" constant="15" id="P0A-Gb-9Gj"/>
                             <constraint firstItem="ZGd-61-fa0" firstAttribute="top" secondItem="8oM-uZ-msW" secondAttribute="bottom" constant="10" id="SCR-0C-jRC"/>
+                            <constraint firstItem="6e0-Vz-Rms" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="SUm-Ib-TQ8"/>
                             <constraint firstItem="ZGd-61-fa0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VT8-6N-QjZ"/>
                             <constraint firstItem="YQ1-UN-IYQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WSY-4F-eyU"/>
-                            <constraint firstItem="ShD-e4-gkZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="34" id="bZ1-iQ-Zwy"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ShD-e4-gkZ" secondAttribute="trailing" constant="34" id="etc-bd-vFg"/>
+                            <constraint firstItem="6e0-Vz-Rms" firstAttribute="top" secondItem="0ea-qd-Kg6" secondAttribute="bottom" constant="3" id="aaT-S2-9cC"/>
+                            <constraint firstItem="LoR-GD-8jU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ccM-H4-mE7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LoR-GD-8jU" secondAttribute="trailing" constant="20" id="dUU-dl-8st"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6e0-Vz-Rms" secondAttribute="trailing" constant="20" id="e2Q-y5-2jp"/>
                             <constraint firstItem="oIB-nS-hew" firstAttribute="top" secondItem="IV5-dk-8n9" secondAttribute="bottom" constant="15" id="hhY-Gh-rU8"/>
-                            <constraint firstItem="kXc-63-hWl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="38" id="jRd-Vj-fJV"/>
-                            <constraint firstItem="0ea-qd-Kg6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="kH4-xl-V1T"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0ea-qd-Kg6" secondAttribute="trailing" constant="30" id="uPu-GT-AQE"/>
+                            <constraint firstItem="0ea-qd-Kg6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="kH4-xl-V1T"/>
+                            <constraint firstItem="LoR-GD-8jU" firstAttribute="top" secondItem="6e0-Vz-Rms" secondAttribute="bottom" constant="5" id="sNd-Bw-Qpn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0ea-qd-Kg6" secondAttribute="trailing" constant="16" id="uPu-GT-AQE"/>
                             <constraint firstItem="oIB-nS-hew" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="vs7-Y9-1eO"/>
+                            <constraint firstItem="0ea-qd-Kg6" firstAttribute="top" secondItem="oIB-nS-hew" secondAttribute="bottom" constant="30" id="wpE-cT-BQY"/>
                             <constraint firstItem="YQ1-UN-IYQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wyj-Le-vTt"/>
-                            <constraint firstItem="kXc-63-hWl" firstAttribute="top" secondItem="0ea-qd-Kg6" secondAttribute="bottom" constant="10" id="xlh-nx-N4x"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4b6-g9-WSW"/>
                     <connections>
+                        <outlet property="appleSignIn" destination="7gY-Ch-Fav" id="Tgj-fC-xco"/>
+                        <outlet property="emailHeight" destination="qNb-ga-es5" id="sMv-t3-NXu"/>
                         <outlet property="emailTextField" destination="wo6-tJ-kdV" id="5pG-5f-maF"/>
                         <outlet property="googleSignIn" destination="0ea-qd-Kg6" id="R50-1C-uB6"/>
+                        <outlet property="passwordHeight" destination="tOJ-hg-r3g" id="f8X-oV-iku"/>
                         <outlet property="passwordTextField" destination="IV5-dk-8n9" id="U7e-6y-mUB"/>
                         <outlet property="signInButton" destination="oIB-nS-hew" id="jPb-oD-ZP2"/>
+                        <outlet property="signInHeight" destination="1Xx-l5-tGq" id="qOw-rg-D3o"/>
                         <segue destination="fVl-bs-ToI" kind="show" identifier="LoginToTabBar" id="6et-hH-ar6"/>
                     </connections>
                 </viewController>
@@ -463,7 +523,7 @@
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWt-26-pXb" userLabel="Container">
-                                <rect key="frame" x="77" y="840" width="260" height="22"/>
+                                <rect key="frame" x="77" y="830" width="260" height="22"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVL-dD-ezs">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="22"/>
@@ -498,7 +558,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t99-FF-uhw" userLabel="SignInButton" customClass="NYButton" customModule="NYDimes" customModuleProvider="target">
-                                <rect key="frame" x="20" y="760" width="374" height="50"/>
+                                <rect key="frame" x="20" y="750" width="374" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="dAo-o4-zwh"/>
                                 </constraints>
@@ -524,7 +584,6 @@
                             <constraint firstItem="kQh-OA-j1v" firstAttribute="leading" secondItem="Z3d-g9-nuc" secondAttribute="leading" constant="20" id="WH0-71-4GY"/>
                             <constraint firstItem="t99-FF-uhw" firstAttribute="centerX" secondItem="A2d-hW-hJm" secondAttribute="centerX" id="Z6c-VS-WGb"/>
                             <constraint firstItem="kmW-eB-aDE" firstAttribute="leading" secondItem="Z3d-g9-nuc" secondAttribute="leading" constant="20" id="bn5-Xu-WuE"/>
-                            <constraint firstItem="dWt-26-pXb" firstAttribute="bottom" secondItem="Z3d-g9-nuc" secondAttribute="bottom" id="eCg-g0-uhB"/>
                             <constraint firstItem="dWt-26-pXb" firstAttribute="centerX" secondItem="A2d-hW-hJm" secondAttribute="centerX" id="eff-ip-DP6"/>
                             <constraint firstItem="Xeo-oN-Gmf" firstAttribute="centerX" secondItem="A2d-hW-hJm" secondAttribute="centerX" id="fOW-6S-a1m"/>
                             <constraint firstItem="960-Gp-d8y" firstAttribute="leading" secondItem="Z3d-g9-nuc" secondAttribute="leading" constant="20" id="g1b-Rp-9Xe"/>
@@ -533,14 +592,19 @@
                             <constraint firstItem="960-Gp-d8y" firstAttribute="top" secondItem="z9n-uV-QaI" secondAttribute="bottom" constant="75" id="rIS-w0-Gc2"/>
                             <constraint firstItem="960-Gp-d8y" firstAttribute="centerX" secondItem="A2d-hW-hJm" secondAttribute="centerX" id="sTM-C2-Ls6"/>
                             <constraint firstItem="z9n-uV-QaI" firstAttribute="top" secondItem="Xeo-oN-Gmf" secondAttribute="bottom" constant="10" id="tYG-Cc-464"/>
+                            <constraint firstItem="Z3d-g9-nuc" firstAttribute="bottom" secondItem="dWt-26-pXb" secondAttribute="bottom" constant="10" id="uh7-Qv-9G6"/>
                             <constraint firstItem="kmW-eB-aDE" firstAttribute="centerX" secondItem="A2d-hW-hJm" secondAttribute="centerX" id="uls-HZ-gTy"/>
                             <constraint firstItem="kQh-OA-j1v" firstAttribute="top" secondItem="kmW-eB-aDE" secondAttribute="bottom" constant="15" id="yQz-4V-Mqw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GIC-bZ-34y"/>
                     <connections>
+                        <outlet property="createButtonHeight" destination="dAo-o4-zwh" id="D24-R8-BCL"/>
+                        <outlet property="emailHeight" destination="uPa-3c-qVq" id="Ji0-Qp-6Wu"/>
                         <outlet property="emailTextField" destination="kmW-eB-aDE" id="Tb1-2J-5Na"/>
+                        <outlet property="nameHeight" destination="sma-gr-FxP" id="jk2-rG-ckz"/>
                         <outlet property="nameTextField" destination="960-Gp-d8y" id="MIj-bU-WHc"/>
+                        <outlet property="passwordHeight" destination="jZi-zs-hra" id="0JY-mH-LcO"/>
                         <outlet property="passwordTextField" destination="kQh-OA-j1v" id="sXM-NQ-yna"/>
                         <outlet property="signUpButton" destination="t99-FF-uhw" id="xfg-1a-18S"/>
                         <segue destination="fVl-bs-ToI" kind="show" identifier="RegisterToTabBar" id="0gu-sH-75K"/>
@@ -552,10 +616,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6et-hH-ar6"/>
+        <segue reference="0gu-sH-75K"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="NYDimesT" width="500" height="500"/>
+        <image name="appleLogo-1" width="225" height="225"/>
         <image name="guest" width="50" height="50"/>
         <image name="newspaper" catalog="system" width="128" height="108"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
