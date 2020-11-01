@@ -8,10 +8,17 @@
 import Foundation
 import FirebaseAuth
 import AuthenticationServices
+import RxSwift
+import RxCocoa
 
 class LoginViewModel{
     let authManager = AuthManager()
     
+    func signInNormally(vc: UIViewController, emailText: String?, passwordText: String?) {
+        if let email = emailText, let password = passwordText{
+            authManager.login(viewController: vc, email: email, password: password)
+        }
+    }
     
     func appleSignIn(viewController: UIViewController){
         authManager.loginApple(viewController: viewController)
@@ -21,8 +28,9 @@ class LoginViewModel{
         authManager.authorizeAppleFirebase(credential: credential){ (signedIn) in
             completion(signedIn)
         }
-                                                                    
-        
-        
+    }
+    
+    func getGoogleObservable() -> BehaviorRelay<Bool> {
+        return AuthManager.googleObserverVariable
     }
 }

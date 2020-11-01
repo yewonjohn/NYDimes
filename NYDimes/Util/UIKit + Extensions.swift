@@ -156,3 +156,20 @@ public extension UIDevice {
     }()
 
 }
+
+extension MoviesViewController {
+    
+    func convertOrderText(order: String) -> String{
+        
+        switch order {
+        case "by release":
+            return "by_opening_date"
+        case "by published":
+            return "by_published_date"
+        default:
+            return "by_title"
+        }
+        
+    }
+    
+}

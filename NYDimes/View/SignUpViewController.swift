@@ -47,10 +47,10 @@ class SignUpViewController : UIViewController{
     }
     
     func adjustHeightDynamically(){
-        nameHeight.constant = view.frame.height * 0.06
-        emailHeight.constant = view.frame.height * 0.06
-        passwordHeight.constant = view.frame.height * 0.06
-        createButtonHeight.constant = view.frame.height * 0.06
+//        nameHeight.constant = view.frame.height * 0.06
+//        emailHeight.constant = view.frame.height * 0.06
+//        passwordHeight.constant = view.frame.height * 0.06
+//        createButtonHeight.constant = view.frame.height * 0.06
     }
     
 }

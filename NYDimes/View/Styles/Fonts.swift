@@ -48,5 +48,12 @@ extension UIFont {
         return UIFont(name: "Roboto-Medium", size: 14.0)!
     }
     
+    class var movieTitle: UIFont {
+        return UIFont(name: "Poppins-Medium", size: 16.0)!
+    }
+    
+    class var movieDescription: UIFont {
+        return UIFont(name: "Poppins-Regular", size: 12.0)!
+    }
     
 }

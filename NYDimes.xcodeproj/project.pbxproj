@@ -49,6 +49,11 @@
 		449A27B02538B5F10035CAEB /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A27AF2538B5F10035CAEB /* ArticleManager.swift */; };
 		449A27DE253924870035CAEB /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A27DD253924870035CAEB /* ArticleModel.swift */; };
 		449A280925393E3C0035CAEB /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A280825393E3C0035CAEB /* ArticlesViewController.swift */; };
+		449AAEA1254DAB26003D83A8 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449AAEA0254DAB26003D83A8 /* MovieModel.swift */; };
+		449AAEA6254DAB4A003D83A8 /* MovieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449AAEA5254DAB4A003D83A8 /* MovieManager.swift */; };
+		449AAEAB254DD181003D83A8 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449AAEAA254DD181003D83A8 /* MoviesViewController.swift */; };
+		449AAEB0254DD1F6003D83A8 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449AAEAF254DD1F6003D83A8 /* MovieCell.swift */; };
+		449AAEB8254DD4E8003D83A8 /* MoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449AAEB7254DD4E8003D83A8 /* MoviesViewModel.swift */; };
 		44B3E22F2541F0C6003F5656 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B3E22E2541F0C6003F5656 /* LoginViewModel.swift */; };
 		44B3E23A25421421003F5656 /* NYAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B3E23925421421003F5656 /* NYAppleButton.swift */; };
 		44B3E24525422135003F5656 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44B3E23E25422039003F5656 /* Roboto-Medium.ttf */; };
@@ -139,6 +144,11 @@
 		449A27AF2538B5F10035CAEB /* ArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
 		449A27DD253924870035CAEB /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		449A280825393E3C0035CAEB /* ArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
+		449AAEA0254DAB26003D83A8 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		449AAEA5254DAB4A003D83A8 /* MovieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieManager.swift; sourceTree = "<group>"; };
+		449AAEAA254DD181003D83A8 /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
+		449AAEAF254DD1F6003D83A8 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		449AAEB7254DD4E8003D83A8 /* MoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
 		44B3E22A2541ED39003F5656 /* NYDimes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NYDimes.entitlements; sourceTree = "<group>"; };
 		44B3E22E2541F0C6003F5656 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		44B3E23925421421003F5656 /* NYAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYAppleButton.swift; sourceTree = "<group>"; };
@@ -275,6 +285,7 @@
 			children = (
 				449A27DD253924870035CAEB /* ArticleModel.swift */,
 				44FC7AF7253F7A1B00C7614D /* ArticleModelDecodable.swift */,
+				449AAEA0254DAB26003D83A8 /* MovieModel.swift */,
 				449A27DC2539246A0035CAEB /* Network */,
 			);
 			path = Model;
@@ -287,6 +298,7 @@
 				44EE919A253D3A0A0039F0A8 /* ArticlesViewModel.swift */,
 				44FC7AB6253E358200C7614D /* ProfileViewModel.swift */,
 				44FC7B0B253FAC8D00C7614D /* SavedViewModel.swift */,
+				449AAEB7254DD4E8003D83A8 /* MoviesViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -300,6 +312,7 @@
 				449A27742538A4EC0035CAEB /* SignUpViewController.swift */,
 				449A27A72538AD380035CAEB /* TabBarViewController.swift */,
 				449A280825393E3C0035CAEB /* ArticlesViewController.swift */,
+				449AAEAA254DD181003D83A8 /* MoviesViewController.swift */,
 				44FC7AA1253E2FED00C7614D /* ProfileViewController.swift */,
 				44FC7AEF253E81A900C7614D /* SavedViewController.swift */,
 				449A27D6253907890035CAEB /* Cells */,
@@ -358,6 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				44EE918D253CD8010039F0A8 /* ArticleCell.swift */,
+				449AAEAF254DD1F6003D83A8 /* MovieCell.swift */,
 				44FC7AA9253E32E200C7614D /* SettingsCell.swift */,
 				44FC7AAA253E32E200C7614D /* SettingsCell.xib */,
 				44FC7AFF253F828A00C7614D /* SavedCell.swift */,
@@ -372,6 +386,7 @@
 				449A27A22538A8DD0035CAEB /* AuthManager.swift */,
 				449A27AF2538B5F10035CAEB /* ArticleManager.swift */,
 				44FC7A9C253DFBC000C7614D /* SavedArticleManager.swift */,
+				449AAEA5254DAB4A003D83A8 /* MovieManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -700,19 +715,24 @@
 				445ADBFC25407CCC008864B6 /* NYPickerTitleLabel.swift in Sources */,
 				449A264C25375B3A0035CAEB /* Fonts.swift in Sources */,
 				44FC7B77253FCD3F00C7614D /* NYSearchButton.swift in Sources */,
+				449AAEB8254DD4E8003D83A8 /* MoviesViewModel.swift in Sources */,
+				449AAEA1254DAB26003D83A8 /* MovieModel.swift in Sources */,
 				449A27A32538A8DD0035CAEB /* AuthManager.swift in Sources */,
 				44EE9193253CDE2A0039F0A8 /* NYTextField.swift in Sources */,
 				449A280925393E3C0035CAEB /* ArticlesViewController.swift in Sources */,
 				44EE919B253D3A0A0039F0A8 /* ArticlesViewModel.swift in Sources */,
 				44FC7AF0253E81A900C7614D /* SavedViewController.swift in Sources */,
 				44FC7AB7253E358200C7614D /* ProfileViewModel.swift in Sources */,
+				449AAEB0254DD1F6003D83A8 /* MovieCell.swift in Sources */,
 				44EE918E253CD8010039F0A8 /* ArticleCell.swift in Sources */,
 				44EE91A0253D40E60039F0A8 /* GradientImageView.swift in Sources */,
+				449AAEA6254DAB4A003D83A8 /* MovieManager.swift in Sources */,
 				449A27752538A4EC0035CAEB /* SignUpViewController.swift in Sources */,
 				44FC7AA2253E2FED00C7614D /* ProfileViewController.swift in Sources */,
 				44B3E23A25421421003F5656 /* NYAppleButton.swift in Sources */,
 				442AA1C1253FD33C00891195 /* NYPickerLabel.swift in Sources */,
 				44FC7ABC253E570700C7614D /* NYGoogleButton.swift in Sources */,
+				449AAEAB254DD181003D83A8 /* MoviesViewController.swift in Sources */,
 				44FC7B07253F894800C7614D /* Animations.swift in Sources */,
 				44FC7AE2253E6A5E00C7614D /* NYGuestButton.swift in Sources */,
 				449A27B02538B5F10035CAEB /* ArticleManager.swift in Sources */,
@@ -906,14 +926,14 @@
 				CODE_SIGN_ENTITLEMENTS = NYDimes/NYDimes.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = 6N6H5WV55Y;
 				INFOPLIST_FILE = NYDimes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = co.jykim.NYDimes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -931,14 +951,14 @@
 				CODE_SIGN_ENTITLEMENTS = NYDimes/NYDimes.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = 6N6H5WV55Y;
 				INFOPLIST_FILE = NYDimes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = co.jykim.NYDimes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

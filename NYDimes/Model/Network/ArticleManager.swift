@@ -16,10 +16,11 @@ protocol ArticleManagerDelegate {
 class ArticleManager {
     
     var delegate: ArticleManagerDelegate?
-    
+    let apiKey = Const.API.apiKey
+
     func getArticles(type: String, days: Int, completion: @escaping ((_ articles:[ArticleModel])->Void)) {
         var resultArticles = [ArticleModel]()
-        let apiKey = "xhCbQFpLJv0wgUALuxi21dzp3pl873cb"
+        
         let url = "https://api.nytimes.com/svc/mostpopular/v2/\(type)/\(days).json?api-key=\(apiKey)"
         
         delegate?.isLoading()
@@ -43,7 +44,6 @@ class ArticleManager {
     //MARK:-- IMPLEMENTING URLSESSION FOR PRACTICE
     func getArticlesURLSession(type: String, days: Int, completion: @escaping ((_ articles:[ArticleModel])->Void)){
         var resultArticles = [ArticleModel]()
-        let apiKey = "xhCbQFpLJv0wgUALuxi21dzp3pl873cb"
 
         let session = URLSession.shared
         let url = URL(string: "https://api.nytimes.com/svc/mostpopular/v2/\(type)/\(days).json?api-key=\(apiKey)")!

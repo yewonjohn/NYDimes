@@ -16,6 +16,8 @@ target 'NYDimes' do
   pod 'SwipeCellKit'
   pod 'Kingfisher', '~> 5.14'
   pod 'NVActivityIndicatorView'
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
 
   target 'NYDimesTests' do

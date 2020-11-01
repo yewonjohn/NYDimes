@@ -8,12 +8,20 @@
 import UIKit
 import FirebaseAuth
 import AuthenticationServices
+import RxSwift
+import RxCocoa
 
 //Firebase calls to all Authentication related tasks
 class AuthManager{
     
-    let userDefault = UserDefaults.standard
+    //MARK:-- Properties
+    static let userDefault = UserDefaults.standard
     fileprivate var currentNonce: String?
+    //rxswift
+    static var googleObserverVariable : BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    static var googleObserver : Observable<Bool> {
+        return googleObserverVariable.asObservable()
+    }
     
     //MARK:-- Standard EMAIL/PASSWORD LOGIN
     func login(viewController: UIViewController, email: String, password: String){
@@ -26,23 +34,26 @@ class AuthManager{
                 viewController.present(alert, animated: true, completion: nil)
             } else {
                 print("Signed In!")
-                self.userDefault.set(true, forKey: "usersignedin")
-                self.userDefault.synchronize()
+                AuthManager.userDefault.set(true, forKey: "usersignedin")
+                AuthManager.userDefault.synchronize()
 
                 viewController.performSegue(withIdentifier: "LoginToTabBar", sender: self)
             }
         }
     }
     //MARK:-- GOOGLE LOGIN
-    func loginGoogle(credential: AuthCredential){
+    static func loginGoogle(credential: AuthCredential){
         Auth.auth().signIn(with: credential) { (authResult, error) in
           if let error = error {
             print(error)
           }else{
-            let name = Notification.Name(rawValue: "googleSignedIn")
-            self.userDefault.set(true, forKey: "usersignedin")
-            self.userDefault.synchronize()
-            NotificationCenter.default.post(name: name, object: nil)
+//            let name = Notification.Name(rawValue: "googleSignedIn")
+            userDefault.set(true, forKey: "usersignedin")
+            userDefault.synchronize()
+            //rxswift
+            googleObserverVariable.accept(true)
+            print(self.googleObserverVariable.value)
+//            NotificationCenter.default.post(name: name, object: nil)
           }
         }
     }
@@ -92,8 +103,8 @@ class AuthManager{
             
             if let user = authDataResult?.user{
                 print("successfully signed in with Apple")
-                self.userDefault.set(true, forKey: "usersignedin")
-                self.userDefault.synchronize()
+                AuthManager.userDefault.set(true, forKey: "usersignedin")
+                AuthManager.userDefault.synchronize()
                 completion(true)
             }
             
@@ -118,8 +129,8 @@ class AuthManager{
                 changeRequest?.commitChanges { (error) in
                     print("error saving display name of current user \(error)")
                 }
-                self.userDefault.set(true, forKey: "usersignedin")
-                self.userDefault.synchronize()
+                AuthManager.userDefault.set(true, forKey: "usersignedin")
+                AuthManager.userDefault.synchronize()
                 
                 viewController.performSegue(withIdentifier: "RegisterToTabBar", sender: self)
             }
@@ -136,8 +147,8 @@ class AuthManager{
         
         do { try Auth.auth().signOut() }
         catch { print("already logged out") }
-        self.userDefault.set(false, forKey: "usersignedin")
-        self.userDefault.synchronize()
+        AuthManager.userDefault.set(false, forKey: "usersignedin")
+        AuthManager.userDefault.synchronize()
         
         print("signed out")
     }

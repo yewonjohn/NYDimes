@@ -20,8 +20,8 @@ class ArticlesViewController: UIViewController{
     //MARK:- Properties
     let viewModel = ArticlesViewModel()
     var listOfArticles = [ArticleModel]()
-    let typePickerData = Const.typePickerData
-    let daysPickerData = Const.daysPickerData
+    let typePickerData = Const.Articles.typePickerData
+    let daysPickerData = Const.Articles.daysPickerData
     var type : String?
     var days : Int?
     

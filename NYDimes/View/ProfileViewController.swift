@@ -104,11 +104,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
                         print("cancel")
                     case .destructive:
                         self.profileViewModel.signOut()
+                        self.navigationController?.setNavigationBarHidden(false, animated: true)
                         self.navigationController?.popToRootViewController(animated: true)
                     }}))
                 
                 self.present(alert, animated: true, completion: nil)
                 } else{
+                    self.navigationController?.setNavigationBarHidden(false, animated: true)
                     self.navigationController?.popToRootViewController(animated: true)
                 }
         }

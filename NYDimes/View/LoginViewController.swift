@@ -9,6 +9,8 @@ import UIKit
 import GoogleSignIn
 import IQKeyboardManager
 import AuthenticationServices
+import RxSwift
+import RxCocoa
 
 class LoginViewController: UIViewController {
     
@@ -25,18 +27,17 @@ class LoginViewController: UIViewController {
     
     
     // MARK: - Properties
-    let auth = AuthManager()
-    let googleKey = Notification.Name(rawValue: "googleSignedIn")
-    let userDefault = UserDefaults.standard
-    let viewModel = LoginViewModel()
+//    private let googleKey = Notification.Name(rawValue: "googleSignedIn")
+    private let userDefault = UserDefaults.standard
+    private let viewModel = LoginViewModel()
+    private let disposeBag = DisposeBag()
+    private let auth = AuthManager()
 
 
     // MARK: - User Interactions
     //for email/pass login
     @IBAction func signIn(_ sender: UIButton) {
-        if let email = emailTextField.text, let password = passwordTextField.text{
-            auth.login(viewController: self, email: email, password: password)
-        }
+        viewModel.signInNormally(vc: self, emailText: emailTextField.text, passwordText: passwordTextField.text)
     }
     //for guest login
     @IBAction func signInAsGuest(_ sender: UIButton) {
@@ -47,7 +48,11 @@ class LoginViewController: UIViewController {
     @IBAction func signInAsApple(_ sender: UIButton) {
         viewModel.appleSignIn(viewController: self)
     }
-    
+    //for google login
+    @objc func googleSegue(notification: NSNotification){
+        print("Signed in with Google!")
+        self.performSegue(withIdentifier: "LoginToTabBar", sender: self)
+    }
     
     // MARK: - LifeCycle Methods
     deinit {
@@ -55,18 +60,22 @@ class LoginViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if userDefault.bool(forKey: "usersignedin") {
-            self.performSegue(withIdentifier: "LoginToTabBar", sender: self)
-        }
-        createObservers()
+       
+        loginAutomatically()
+        setupObserverable()
         configureLayout()
         googleSignConfig()
         layoutConfig()
-
+            
     }
 
     //MARK:- Configs
+    func loginAutomatically(){
+        if userDefault.bool(forKey: "usersignedin") {
+            self.performSegue(withIdentifier: "LoginToTabBar", sender: self)
+        }
+    }
+    
     func configureLayout(){
         //NavBar Transparancy
         navigationController?.setup()
@@ -84,21 +93,24 @@ class LoginViewController: UIViewController {
         emailTextField.placeholder = "Email"
         passwordTextField.placeholder = "Password"
         
-        signInHeight.constant = view.frame.height * 0.06
-        emailHeight.constant = view.frame.height * 0.06
-        passwordHeight.constant = view.frame.height * 0.06
+        
+        
+//        signInHeight.constant = view.frame.height * 0.06
+//        emailHeight.constant = view.frame.height * 0.06
+//        passwordHeight.constant = view.frame.height * 0.06
+    }
+    
+    func setupObserverable(){
+//        googleObserve = viewModel.getGoogleObservable()
 
-    }
-    
-    
-    
-    func createObservers(){
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.googleSegue(notification:)), name: googleKey, object: nil)
-    }
-    
-    @objc func googleSegue(notification: NSNotification){
-        print("Signed in with Google!")
-        self.performSegue(withIdentifier: "LoginToTabBar", sender: self)
+        viewModel.getGoogleObservable().asObservable().subscribe(onNext: { [weak self] (didSignIn) in
+            guard let self = self else { return }
+            print(didSignIn)
+            if(didSignIn){
+                print(didSignIn)
+                self.performSegue(withIdentifier: "LoginToTabBar", sender: self)
+            }
+        }).disposed(by: disposeBag)
     }
 
 }
